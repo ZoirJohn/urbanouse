@@ -4,7 +4,7 @@ import { ImageAnimate } from '@/components/ui/animate'
 
 export default function Home() {
         return (
-                <section className='min-h-256 relative'>
+                <section className='min-h-256 relative max-w-360 mx-auto max-[1280px]:min-h-200 max-lg:min-h-160'>
                         <div className='container'></div>
                         <Image src={banner} alt='banner' className='absolute bottom-0 w-full z-10' />
                         <ImageAnimate />

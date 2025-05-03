@@ -8,6 +8,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from '@/components/ui/navigation-menu'
 import Image from 'next/image'
 import clsx from 'clsx'
+import { useEffect, useState } from 'react'
 
 const navLinks = [
         { href: '/', label: 'Home' },
@@ -20,10 +21,17 @@ const navLinks = [
 
 export function Header() {
         const pathname = usePathname()
-
+        const [scroll, setScroll] = useState<boolean>(false)
+        const [open, setOpen] = useState<boolean>(false)
+        useEffect(() => {
+                window.addEventListener('scroll', () => setScroll(window.scrollY > 30))
+                if (window.scrollY > 30) {
+                        setScroll(true)
+                }
+        }, [])
         return (
-                <header className='fixed left-0 w-full'>
-                        <div className='container flex justify-between items-center px-1 py-4'>
+                <header className={clsx('fixed left-0 w-full z-30', { 'bg-white': scroll })}>
+                        <div className='container flex justify-between items-center px-1 py-4 '>
                                 <Link href='/'>
                                         <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
                                         <Image src='./logoMin.svg' alt='logo' width={26} height={30} className='lg:hidden' />
@@ -51,13 +59,9 @@ export function Header() {
                                 </div>
 
                                 <div className='md:hidden'>
-                                        <Sheet>
+                                        <Sheet open={open} onOpenChange={() => setOpen(false)}>
                                                 <SheetTitle></SheetTitle>
-                                                <SheetTrigger asChild>
-                                                        <Button variant='ghost' size='icon'>
-                                                                <Menu className='w-6 h-6' />
-                                                        </Button>
-                                                </SheetTrigger>
+                                                <Menu className='w-6 h-6' onClick={() => setOpen(!open)} />
                                                 <SheetContent side='right' className='w-62.5 px-10'>
                                                         <div className='flex flex-col gap-4 mt-10 text-gray-800 font-medium'>
                                                                 {navLinks.map(({ href, label }) => (
