@@ -22,11 +22,11 @@ export function Header() {
         const pathname = usePathname()
 
         return (
-                <header>
-                        <div className='container flex items-center justify-between px-1 py-4 bg-white'>
+                <header className='fixed left-0 w-full'>
+                        <div className='container flex justify-between items-center px-1 py-4'>
                                 <Link href='/'>
                                         <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
-                                        <Image src='./logoMin.svg' alt='logo' width={26} height={30} className='lg:hiddeb' />
+                                        <Image src='./logoMin.svg' alt='logo' width={26} height={30} className='lg:hidden' />
                                 </Link>
 
                                 <NavigationMenu className='hidden md:flex'>
@@ -67,9 +67,11 @@ export function Header() {
                                                                 ))}
                                                                 <div className='pt-4 border-t flex flex-col gap-2'>
                                                                         <Button variant='outline' className='rounded-3xl'>
-                                                                                Sign In
+                                                                                <Link href='/signup'>Sign Up</Link>
                                                                         </Button>
-                                                                        <Button className='rounded-3xl'>Get Started</Button>
+                                                                        <Button className='rounded-3xl'>
+                                                                                <Link href='signin'>Sign In</Link>
+                                                                        </Button>
                                                                 </div>
                                                         </div>
                                                 </SheetContent>
