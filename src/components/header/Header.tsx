@@ -30,7 +30,7 @@ export function Header() {
                 }
         }, [])
         return (
-                <header className={clsx('fixed left-0 w-full z-30', { 'bg-white': scroll })}>
+                <header className={clsx('fixed left-0 w-full z-30 top-0', { 'bg-white': scroll })}>
                         <div className='container flex justify-between items-center px-1 py-4 '>
                                 <Link href='/'>
                                         <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
