@@ -22,7 +22,7 @@ export default function RootLayout({
                 <html lang='en'>
                         <body className={`${manrope.className} antialiased font-sans`}>
                                 <Header />
-                                <main className='mt-20'>{children}</main>
+                                <main className='mt-19 max-md:mt-15'>{children}</main>
                         </body>
                 </html>
         )

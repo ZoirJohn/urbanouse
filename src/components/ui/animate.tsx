@@ -15,5 +15,5 @@ export function ImageAnimate() {
         useEffect(() => {
                 animate()
         }, [])
-        return <Image src={urb} alt='urbanouse' className='absolute top-1/3 w-335.5 left-1/2 -translate-x-1/2 transition-all duration-800 opacity-0 max-lg:top-1/2' id='urbanouse' />
+        return <Image src={urb} alt='urbanouse' className='absolute top-1/3 w-335.5 left-1/2 -translate-x-1/2 transition-all duration-800 opacity-0 max-lg:top-1/2 max-sm:top-3/4' id='urbanouse' />
 }
