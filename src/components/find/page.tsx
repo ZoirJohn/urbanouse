@@ -1,7 +1,7 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Button } from '../ui/button'
 
-export function FindDreamProp(props: {}) {
+export function FindDreamProp() {
         return (
                 <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5'>
                         <div className='container flex flex-col items-center gap-15'>
