@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from '@/components/ui/navigation-menu'
 import Image from 'next/image'
 import clsx from 'clsx'
@@ -30,7 +30,7 @@ export function Header() {
                 }
         }, [])
         return (
-                <header className={clsx('fixed left-0 w-full z-30 top-0', { 'bg-white': scroll })}>
+                <header className={clsx('fixed left-0 w-full z-30 top-0 bg-white', { 'bg-white': scroll })}>
                         <div className='container flex justify-between items-center px-1 py-4 '>
                                 <Link href='/'>
                                         <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
@@ -50,7 +50,7 @@ export function Header() {
                                 </NavigationMenu>
 
                                 <div className='hidden md:flex gap-3'>
-                                        <Button variant='outline' className='rounded-3xl'>
+                                        <Button variant='outline' className='rounded-3xl dark:text-black'>
                                                 <Link href='/signup'>Sign Up</Link>
                                         </Button>
                                         <Button className='rounded-3xl'>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/header/Header'
+import { ThemeProvider } from '@/components/themeProvider'
 
 const manrope = Plus_Jakarta_Sans({
         variable: '--manrope',
@@ -19,10 +20,12 @@ export default function RootLayout({
         children: React.ReactNode
 }>) {
         return (
-                <html lang='en'>
+                <html lang='en' suppressHydrationWarning>
                         <body className={`${manrope.className} antialiased font-sans`}>
-                                <Header />
-                                <main className='mt-19 max-md:mt-15'>{children}</main>
+                                <ThemeProvider defaultTheme='light' attribute='class' enableSystem disableTransitionOnChange>
+                                        <Header />
+                                        <main className='mt-17 max-md:mt-15'>{children}</main>
+                                </ThemeProvider>
                         </body>
                 </html>
         )
