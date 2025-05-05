@@ -1,5 +1,6 @@
 'use server'
 
+import { createClient } from '@supabase/supabase-js'
 import { z } from 'zod'
 
 export type FormState = {
@@ -34,9 +35,16 @@ export async function signup(state: FormState, formData: FormData): Promise<Form
                 }
         }
 
+        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+        const { data, error } = await supabase.auth.signUp({
+                email: validationResult.data.email,
+                password: validationResult.data.password,
+        })
+
+        if (error) {
+                return {
+                        errors: { email: [error.message] },
+                }
+        }
         return { errors: {} }
 }
-
-// export async function findPerfectMatch(state:any,formData:FormData) {
-        
-// }

@@ -1,19 +1,24 @@
 'use client'
 import Image from 'next/image'
-import { useEffect } from 'react'
 import urb from '../../../public/urb.png'
+import { useEffect, useState } from 'react'
+import clsx from 'clsx'
 
 export function ImageAnimate() {
-        function animate() {
-                const anim = document.getElementById('urbanouse')!
-                const parentElement = anim.closest('section')!
-                if (parentElement.getBoundingClientRect().top - 400 <= 0) {
-                        anim!.classList.add('-translate-y-40')
-                        anim!.classList.remove('opacity-0')
-                }
-        }
+        const [animate, setState] = useState(false)
         useEffect(() => {
-                animate()
+                const timeout = setTimeout(() => setState(true))
+                return () => clearTimeout(timeout)
         }, [])
-        return <Image src={urb} alt='urbanouse' className='absolute top-1/3 w-335.5 left-1/2 -translate-x-1/2 transition-all duration-800 opacity-0 max-lg:top-1/2 max-sm:top-3/4' id='urbanouse' />
+        return (
+                <Image
+                        src={urb}
+                        alt='urbanouse'
+                        id='urbanouse'
+                        className={clsx('absolute left-1/2 -translate-x-1/2 top-40 transition-all duration-500', {
+                                'opacity-0 translate-y-40': !animate,
+                                'opacity-100 translate-y-0': animate,
+                        })}
+                />
+        )
 }
