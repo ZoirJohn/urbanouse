@@ -1,21 +1,18 @@
-import { Button } from '../ui/button'
+import { DescriptionBtn } from '../ui/descriptionBtn'
 
 export function About() {
         return (
                 <section>
                         <div className='container'>
-                                <div className='flex items-center'>
-                                        <div className='basis-[60%]'>
-                                                <Button variant='outline' className='rounded-3xl text-lg h-11 mb-3'>
-                                                        <span className='block w-2.5 h-2.5 bg-black rounded-4xl dark:bg-white'></span>
-                                                        About Urbanouse
-                                                </Button>
+                                <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5'>
+                                        <div className='md:basis-[50%]'>
+                                                <DescriptionBtn text='About Urbanouse' />
                                                 <h1 className='font-semibold'>
-                                                        Your Dream Home, <br />
+                                                        Your Dream Home, <br className='max-md:hidden'/>
                                                         Our Expertise.
                                                 </h1>
                                         </div>
-                                        <p className='basis-[40%]'>
+                                        <p className='md:basis-[45%] description'>
                                                 At Urbanouse, we are committed to helping individuals and families find their perfect homes and smart investment properties. Our approach blends
                                                 personalized service, expert insights, and a dedication to excellence, ensuring your real estate journey is seamless, rewarding, and tailored to your
                                                 unique needs.

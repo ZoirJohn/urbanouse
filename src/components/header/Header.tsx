@@ -31,7 +31,7 @@ export function Header() {
         }, [])
         return (
                 <header className={clsx('fixed left-0 w-full z-30 top-0 bg-white', { 'bg-white': scroll })}>
-                        <div className='container flex justify-between items-center px-1 py-4 '>
+                        <div className='container flex justify-between items-center py-4 '>
                                 <Link href='/'>
                                         <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
                                         <Image src='./logoMin.svg' alt='logo' width={26} height={30} className='lg:hidden' />
@@ -50,12 +50,14 @@ export function Header() {
                                 </NavigationMenu>
 
                                 <div className='hidden md:flex gap-3'>
-                                        <Button variant='outline' className='rounded-3xl dark:text-black'>
-                                                <Link href='/signup'>Sign Up</Link>
-                                        </Button>
-                                        <Button className='rounded-3xl'>
-                                                <Link href='signin'>Sign In</Link>
-                                        </Button>
+                                        <Link href='/signup'>
+                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer'>
+                                                        Sign Up
+                                                </Button>
+                                        </Link>
+                                        <Link href='signin'>
+                                                <Button className='rounded-3xl cursor-pointer'>Sign In</Button>
+                                        </Link>
                                 </div>
 
                                 <div className='md:hidden'>
@@ -70,12 +72,14 @@ export function Header() {
                                                                         </Link>
                                                                 ))}
                                                                 <div className='pt-4 border-t flex flex-col gap-2'>
-                                                                        <Button variant='outline' className='rounded-3xl'>
-                                                                                <Link href='/signup'>Sign Up</Link>
-                                                                        </Button>
-                                                                        <Button className='rounded-3xl'>
-                                                                                <Link href='signin'>Sign In</Link>
-                                                                        </Button>
+                                                                        <Link href='/signup'>
+                                                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer'>
+                                                                                        Sign Up
+                                                                                </Button>
+                                                                        </Link>
+                                                                        <Link href='signin'>
+                                                                                <Button className='rounded-3xl cursor-pointer'>Sign In</Button>
+                                                                        </Link>
                                                                 </div>
                                                         </div>
                                                 </SheetContent>
