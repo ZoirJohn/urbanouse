@@ -27,6 +27,7 @@ export default function RootLayout({
                                         <Header />
                                         <main className='mt-17 max-md:mt-15'>{children}</main>
                                 </ThemeProvider>
+                                <Analytics />
                         </body>
                 </html>
         )
