@@ -43,6 +43,7 @@
         --radius-xl: calc(var(--radius) + 4px);
         --color-gentle: #8c8c8c;
         --breakpoint-xs: 425px;
+        --color-navy: #090c1b;
 }
 
 :root {
@@ -113,9 +114,6 @@
         --sidebar-border: oklch(1 0 0 / 10%);
         --sidebar-ring: oklch(0.556 0 0);
 }
-.container {
-        @apply max-w-[1328px] mx-auto px-1;
-}
 @layer base {
         * {
                 @apply border-border outline-ring/50;
@@ -124,13 +122,19 @@
                 @apply bg-background text-foreground;
         }
 }
+.container {
+        @apply max-w-[1328px] mx-auto px-1;
+}
 h1 {
         font-size: 4.5rem;
 }
 h2 {
-        font-size: 4rem;
+        font-size: 4.5rem;
 }
 h3 {
+        font-size: 4rem;
+}
+h4 {
         font-size: 2.5rem;
 }
 .description {
