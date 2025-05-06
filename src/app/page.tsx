@@ -7,7 +7,7 @@ import Count from '@/components/ui/count'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import Link from 'next/link'
 
-export function Box() {
+function Box() {
         return <div className='rounded-xl bg-[url(/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
 }
 
