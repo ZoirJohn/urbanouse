@@ -3,17 +3,17 @@ import { Button } from '../ui/button'
 
 export function FindDreamProp() {
         return (
-                <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5'>
+                <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5 '>
                         <div className='container flex flex-col items-center gap-15'>
                                 <div className='max-w-122 text-center'>
                                         <h3 className='font-medium mb-2'>Find Your Dream Property</h3>
                                         <p className='description'>We offer modern properties with the best quality that meet all your needs.</p>
                                 </div>
-                                <form action='' className='flex gap-20 max-lg:gap-7 flex-wrap justify-center max-[425px]:flex-col items-center max-[425px]:text-center'>
-                                        <label className='flex flex-col gap-2 text-gentle text-base'>
+                                <form action='' className='flex gap-20 max-lg:gap-7 flex-wrap justify-center max-xs:flex-col items-center max-xs:text-center max-xs:w-full'>
+                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Looking for
                                                 <Select defaultValue='buy'>
-                                                        <SelectTrigger className='w-21'>
+                                                        <SelectTrigger className='w-21 max-xs:w-full'>
                                                                 <SelectValue placeholder='Looking for' />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -22,10 +22,10 @@ export function FindDreamProp() {
                                                         </SelectContent>
                                                 </Select>
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base'>
+                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Location
                                                 <Select defaultValue='london'>
-                                                        <SelectTrigger className='w-26'>
+                                                        <SelectTrigger className='w-26 max-xs:w-full'>
                                                                 <SelectValue placeholder='Theme' />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -35,10 +35,10 @@ export function FindDreamProp() {
                                                         </SelectContent>
                                                 </Select>
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base'>
+                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Property Type
                                                 <Select defaultValue='family house'>
-                                                        <SelectTrigger className='w-39'>
+                                                        <SelectTrigger className='w-39 max-xs:w-full'>
                                                                 <SelectValue placeholder='Theme' />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -48,10 +48,10 @@ export function FindDreamProp() {
                                                         </SelectContent>
                                                 </Select>
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base'>
+                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Bedrooms
                                                 <Select defaultValue='3 bedrooms'>
-                                                        <SelectTrigger className='w-37'>
+                                                        <SelectTrigger className='w-37 max-xs:w-full'>
                                                                 <SelectValue placeholder='Bedrooms' />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -61,10 +61,10 @@ export function FindDreamProp() {
                                                         </SelectContent>
                                                 </Select>
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base'>
+                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Budget
                                                 <Select defaultValue='500,000'>
-                                                        <SelectTrigger className='w-33'>
+                                                        <SelectTrigger className='w-33 max-xs:w-full'>
                                                                 <SelectValue placeholder='Budget' />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -74,7 +74,8 @@ export function FindDreamProp() {
                                                         </SelectContent>
                                                 </Select>
                                         </label>
-                                        <Button className='w-14 h-14 rounded-4xl'>
+                                        <Button className='w-14 h-14 rounded-4xl text-base max-xs:w-full  max-xs:h-12'>
+                                                <span className='xs:hidden'>Search</span>
                                                 <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                         <path
                                                                 fillRule='evenodd'
