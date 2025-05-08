@@ -8,7 +8,7 @@ import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import Link from 'next/link'
 
 function Box() {
-        return <div className='rounded-xl bg-[url(/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
+        return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
 }
 
 export default function Home() {
@@ -121,7 +121,7 @@ export default function Home() {
                                                 </p>
                                         </div>
                                         <div className='grid grid-cols-[500px_repeat(3,minmax(175px,215px))_auto] gap-3 max-container:grid-cols-[350px_repeat(3,minmax(175px,215px))_auto] max-lg:grid-cols-3 max-md:grid-cols-2'>
-                                                <div className='rounded-xl bg-[url(/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-lg:col-span-2 flex items-end p-6'>
+                                                <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-lg:col-span-2 flex items-end p-6'>
                                                         <div className='text-white flex flex-col gap-2'>
                                                                 <p className='text-xl! font-bold'>More projects</p>
                                                                 <p className='text-base!'>Discover modern family living with spacious layouts and top-tier amenities designed for comfort and style.</p>
@@ -151,7 +151,7 @@ export default function Home() {
                                 </div>
                         </section>
                         <section className='bg-navy text-white dark:text-navy dark:bg-white'>
-                                <div className='container flex justify-between items-center px-38'>
+                                <div className='container flex justify-center items-center flex-wrap gap-14 max-xs:flex-col max-xs:items-center max-xs:text-center before:bg-[url(/img/pattern.png)]'>
                                         <div>
                                                 <p className='text-xl'>Home for Rent</p>
                                                 <Count target={5300} />
