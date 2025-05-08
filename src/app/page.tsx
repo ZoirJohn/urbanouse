@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import banner from '../../public/banner.png'
+import banner from '../../public/img/banner.png'
 import { ImageAnimate } from '@/components/ui/animate'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ function Box() {
 export default function Home() {
         return (
                 <>
-                        <section className='min-h-256 relative mx-auto max-[1280px]:min-h-200 max-lg:min-h-140 max-md:min-h-90 bg-white overflow-hidden'>
+                        <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-90 bg-white overflow-hidden'>
                                 <div className='container'></div>
                                 <Image src={banner} alt='banner' className='absolute bottom-0 left-1/2 -translate-x-1/2 w-full z-10 max-w-400' />
                                 <ImageAnimate />
@@ -120,7 +120,7 @@ export default function Home() {
                                                         your unique needs.
                                                 </p>
                                         </div>
-                                        <div className='grid grid-cols-[500px_repeat(3,minmax(175px,215px))_auto] gap-3 max-[1280px]:grid-cols-[350px_repeat(3,minmax(175px,215px))_auto] max-lg:grid-cols-3 max-md:grid-cols-2'>
+                                        <div className='grid grid-cols-[500px_repeat(3,minmax(175px,215px))_auto] gap-3 max-container:grid-cols-[350px_repeat(3,minmax(175px,215px))_auto] max-lg:grid-cols-3 max-md:grid-cols-2'>
                                                 <div className='rounded-xl bg-[url(/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-lg:col-span-2 flex items-end p-6'>
                                                         <div className='text-white flex flex-col gap-2'>
                                                                 <p className='text-xl! font-bold'>More projects</p>

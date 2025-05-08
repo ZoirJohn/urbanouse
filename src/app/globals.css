@@ -43,7 +43,10 @@
         --radius-xl: calc(var(--radius) + 4px);
         --color-gentle: #8c8c8c;
         --breakpoint-xs: 425px;
+        --breakpoint-container: 1280px;
         --color-navy: #090c1b;
+        --color-info: #1990ff;
+        --color-placeholder: #d9d9d9;
 }
 
 :root {

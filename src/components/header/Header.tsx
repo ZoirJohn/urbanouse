@@ -6,9 +6,11 @@ import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem } from '@/components/ui/navigation-menu'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
-import { useEffect, useState } from 'react'
+import logo from '../../../public/img/logo.svg'
+import minLogo from '../../../public/img/logoMin.svg'
 
 const navLinks = [
         { href: '/', label: 'Home' },
@@ -33,8 +35,8 @@ export function Header() {
                 <header className={clsx('fixed left-0 w-full z-30 top-0 bg-white', { 'bg-white': scroll })}>
                         <div className='container flex justify-between items-center py-4 '>
                                 <Link href='/'>
-                                        <Image src='./logo.svg' alt='logo' width={173} height={30} className='max-lg:hidden' />
-                                        <Image src='./logoMin.svg' alt='logo' width={26} height={30} className='lg:hidden' />
+                                        <Image src={logo} alt='logo' width={173} height={30} className='max-lg:hidden' />
+                                        <Image src={minLogo} alt='logo' width={26} height={30} className='lg:hidden' />
                                 </Link>
 
                                 <NavigationMenu className='hidden md:flex'>

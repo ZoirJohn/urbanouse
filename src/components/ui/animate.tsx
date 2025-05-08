@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import urb from '../../../public/urb.png'
+import urb from '../../../public/img/urb.png'
 import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 
