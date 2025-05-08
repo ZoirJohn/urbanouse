@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { signup } from '../../utils/actions'
-import { Component, ReactNode, useActionState } from 'react'
+import { ReactNode, useActionState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import image from '../../../public/img/image.png'
 
-function SignButton({ text, children }: { text: string; children: ReactNode }) {
+function SignButton({ children }: { text: string; children: ReactNode }) {
         return (
                 <Button variant='secondary' className='rounded-4xl cursor-pointer w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
                         {children}
@@ -87,6 +87,10 @@ export default function LoginForm() {
                                                                         autoComplete='family-name'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
                                                                 />
+                                                                {state.errors.email &&
+                                                                        state.errors.email.map((e) => {
+                                                                                return <p>{e}</p>
+                                                                        })}
                                                         </div>
                                                         <div className='grid gap-3'>
                                                                 <Label htmlFor='password' className='text-base'>
