@@ -22,7 +22,7 @@ export default function Home() {
                         <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5 '>
                                 <div className='container flex flex-col items-center gap-15'>
                                         <div className='max-w-122 text-center'>
-                                                <h3 className='font-medium mb-2'>Find Your Dream Property</h3>
+                                                <h4 className='font-medium mb-2'>Find Your Dream Property</h4>
                                                 <p className='description'>We offer modern properties with the best quality that meet all your needs.</p>
                                         </div>
                                         <form action='' className='flex gap-20 max-lg:gap-7 flex-wrap justify-center max-xs:flex-col items-center max-xs:text-center max-xs:w-full'>
@@ -109,10 +109,10 @@ export default function Home() {
                                         <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5 mb-20 max-md:mb-10'>
                                                 <div className='md:basis-[50%]'>
                                                         <DescriptionBtn text='About Urbanouse' />
-                                                        <h4 className='font-semibold'>
+                                                        <h2 className='font-semibold'>
                                                                 Your Dream Home, <br className='max-md:hidden' />
                                                                 Our Expertise.
-                                                        </h4>
+                                                        </h2>
                                                 </div>
                                                 <p className='md:basis-[45%] description'>
                                                         At Urbanouse, we are committed to helping individuals and families find their perfect homes and smart investment properties. Our approach blends
@@ -151,7 +151,7 @@ export default function Home() {
                                 </div>
                         </section>
                         <section className='bg-navy text-white dark:text-navy dark:bg-white'>
-                                <div className='container flex justify-center items-center flex-wrap gap-14 max-xs:flex-col max-xs:items-center max-xs:text-center before:bg-[url(/img/pattern.png)]'>
+                                <div className='container flex justify-center items-center flex-wrap gap-14 max-xs:flex-col max-xs:items-center max-xs:text-center before:bg-[url(/img/pattern.png)] before:absolute'>
                                         <div>
                                                 <p className='text-xl'>Home for Rent</p>
                                                 <Count target={5300} />
