@@ -88,8 +88,8 @@ export default function LoginForm() {
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
                                                                 />
                                                                 {state.errors.email &&
-                                                                        state.errors.email.map((e) => {
-                                                                                return <p>{e}</p>
+                                                                        state.errors.email.map((e, i) => {
+                                                                                return <p key={i}>{e}</p>
                                                                         })}
                                                         </div>
                                                         <div className='grid gap-3'>
