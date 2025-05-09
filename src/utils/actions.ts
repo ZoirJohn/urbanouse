@@ -69,6 +69,7 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
         if (!validationResult.success) {
                 return {
                         errors: validationResult.error.flatten().fieldErrors,
+                        // eslint-disable-next-line
                         values: data as any,
                 }
         }

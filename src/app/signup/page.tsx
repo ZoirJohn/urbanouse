@@ -166,7 +166,7 @@ export default function LoginForm() {
                                                         </div>
                                                         {state.errors.confirmPassword &&
                                                                 state.errors.confirmPassword.map((e, i) => {
-                                                                        return <p className='text-red-600'>{e}</p>
+                                                                        return <p className='text-red-600' key={i}>{e}</p>
                                                                 })}
                                                         <Button type='submit' className='w-full h-12 rounded-4xl mt-3 cursor-pointer'>
                                                                 Sign Up
