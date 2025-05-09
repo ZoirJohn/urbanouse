@@ -11,7 +11,7 @@ function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
 }
 
-export default function Home() {
+export default async function Home() {
         return (
                 <>
                         <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-white overflow-hidden'>

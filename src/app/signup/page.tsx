@@ -20,8 +20,8 @@ function SignButton({ children }: { text: string; children: ReactNode }) {
 }
 
 export default function LoginForm() {
-        const [state, action] = useActionState(signup, { errors: {} })
-
+        const [state, action] = useActionState(signup, { errors: {}, values: {} })
+        console.log(state)
         return (
                 <section className='py-13! max-md:py-10!'>
                         <div className='container flex max-container:text-center max-container:gap-10 max-md:flex-col max-md:items-center'>
@@ -68,42 +68,65 @@ export default function LoginForm() {
                                                 </div>
                                                 <form className='flex flex-col gap-5' action={action}>
                                                         <div className='grid gap-3 grid-cols-2'>
-                                                                <Label htmlFor='name' className='text-base col-span-2'>
+                                                                <Label htmlFor='firstName' className='text-base col-span-2'>
                                                                         Full Name
                                                                 </Label>
                                                                 <Input
                                                                         id='firstName'
-                                                                        name='name'
+                                                                        name='firstName'
                                                                         type='text'
                                                                         placeholder='First Name'
                                                                         autoComplete='name'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
+                                                                        defaultValue={state.values?.firstName || ''}
                                                                 />
                                                                 <Input
                                                                         id='lastName'
-                                                                        name='name'
+                                                                        name='lastName'
                                                                         type='text'
                                                                         placeholder='Last Name'
                                                                         autoComplete='family-name'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
+                                                                        defaultValue={state.values?.lastName || ''}
                                                                 />
-                                                                {state.errors.email &&
-                                                                        state.errors.email.map((e, i) => {
-                                                                                return <p key={i}>{e}</p>
+                                                                {state.errors.firstName &&
+                                                                        state.errors.firstName.map((e, i) => {
+                                                                                return (
+                                                                                        <p key={i} className='text-red-600'>
+                                                                                                {e}
+                                                                                        </p>
+                                                                                )
+                                                                        })}
+                                                                {state.errors.lastName &&
+                                                                        state.errors.lastName.map((e, i) => {
+                                                                                return (
+                                                                                        <p key={i} className='text-red-600'>
+                                                                                                {e}
+                                                                                        </p>
+                                                                                )
                                                                         })}
                                                         </div>
                                                         <div className='grid gap-3'>
-                                                                <Label htmlFor='password' className='text-base'>
+                                                                <Label htmlFor='email' className='text-base'>
                                                                         Email
                                                                 </Label>
                                                                 <Input
-                                                                        id='password'
-                                                                        name='password'
-                                                                        type='password'
+                                                                        id='email'
+                                                                        name='email'
+                                                                        type='email'
                                                                         placeholder='Enter your email'
                                                                         autoComplete='new-password'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
+                                                                        defaultValue={state.values?.email || ''}
                                                                 />
+                                                                {state.errors.email &&
+                                                                        state.errors.email.map((e, i) => {
+                                                                                return (
+                                                                                        <p className='text-red-600' key={i}>
+                                                                                                {e}
+                                                                                        </p>
+                                                                                )
+                                                                        })}
                                                         </div>
                                                         <div className='grid gap-3'>
                                                                 <Label htmlFor='password' className='text-base'>
@@ -111,12 +134,21 @@ export default function LoginForm() {
                                                                 </Label>
                                                                 <Input
                                                                         id='createPassword'
-                                                                        name='createPassword'
+                                                                        name='password'
                                                                         type='password'
                                                                         placeholder='Create your password'
                                                                         autoComplete='new-password'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
+                                                                        defaultValue={state.values?.password || ''}
                                                                 />
+                                                                {state.errors.password &&
+                                                                        state.errors.password.map((e, i) => {
+                                                                                return (
+                                                                                        <p className='text-red-600' key={i}>
+                                                                                                {e}
+                                                                                        </p>
+                                                                                )
+                                                                        })}
                                                         </div>
                                                         <div className='grid gap-3'>
                                                                 <Label htmlFor='password' className='text-base'>
@@ -125,12 +157,17 @@ export default function LoginForm() {
                                                                 <Input
                                                                         id='confirmPassword'
                                                                         name='confirmPassword'
-                                                                        type='password'
+                                                                        type='text'
                                                                         placeholder='Confirm your password'
                                                                         autoComplete='new-password'
                                                                         className='rounded-4xl p-4 h-14 placeholder:text-placeholder'
+                                                                        defaultValue={state.values?.confirmPassword || ''}
                                                                 />
                                                         </div>
+                                                        {state.errors.confirmPassword &&
+                                                                state.errors.confirmPassword.map((e, i) => {
+                                                                        return <p className='text-red-600'>{e}</p>
+                                                                })}
                                                         <Button type='submit' className='w-full h-12 rounded-4xl mt-3 cursor-pointer'>
                                                                 Sign Up
                                                         </Button>

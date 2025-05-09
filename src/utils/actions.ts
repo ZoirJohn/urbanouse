@@ -2,47 +2,32 @@
 
 import { createClient } from '@supabase/supabase-js'
 import { z } from 'zod'
-
-export type SingInState = {
-        errors: {
-                email?: string[]
-                password?: string[]
-        }
-}
-export type SingUpState = {
-        errors: {
-                firstName?: string[]
-                lastName?: string[]
-                email?: string[]
-                password?: string[]
-        }
-}
+import { SingInState, SingUpState } from './schema'
 
 const SigninFormSchema = z.object({
-        email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
+        email: z.string().email({ message: 'Please enter a valid email' }).trim(),
         password: z
                 .string()
                 .min(8, { message: 'Be at least 8 characters long' })
-                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-                .regex(/[0-9]/, { message: 'Contain at least one number.' })
+                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter' })
+                .regex(/[0-9]/, { message: 'Contain at least one number' })
                 .regex(/[^a-zA-Z0-9]/, {
-                        message: 'Contain at least one special character.',
+                        message: 'Contain at least one special character',
                 })
                 .trim(),
 })
 const SignupFormSchema = z.object({
-        email: z.string().email({ message: 'Please enter a valid email.' }).trim(),
-        firstName: z.string().trim(),
-        lastName: z.string().trim(),
+        firstName: z.string().min(1, 'Please provide your name'),
+        lastName: z.string().min(1, 'Please provide your last name'),
+        email: z.string().trim().email({ message: 'Please enter a valid email' }),
         password: z
                 .string()
+                .trim()
                 .min(8, { message: 'Be at least 8 characters long' })
-                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-                .regex(/[0-9]/, { message: 'Contain at least one number.' })
-                .regex(/[^a-zA-Z0-9]/, {
-                        message: 'Contain at least one special character.',
-                })
-                .trim(),
+                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter' })
+                .regex(/[0-9]/, { message: 'Contain at least one number' })
+                .regex(/[^a-zA-Z0-9]/, { message: 'Contain at least one special character' }),
+        confirmPassword: z.string(),
 })
 
 export async function signin(state: SingInState, formData: FormData): Promise<SingInState> {
@@ -72,22 +57,32 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
 }
 
 export async function signup(state: SingUpState, formData: FormData): Promise<SingUpState> {
-        const validationResult = SignupFormSchema.safeParse({
+        const data = {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
-        })
+                email: formData.get('email'),
+                password: formData.get('password'),
+                confirmPassword: formData.get('confirmPassword'),
+        }
+        const validationResult = SignupFormSchema.safeParse(data)
 
         if (!validationResult.success) {
                 return {
                         errors: validationResult.error.flatten().fieldErrors,
+                        values: data as any,
                 }
         }
 
         const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
 
         const { error } = await supabase.auth.signUp({
-                email: validationResult.data.firstName,
+                email: validationResult.data.email,
                 password: validationResult.data.password,
+                options: {
+                        data: {
+                                full_name: `${validationResult.data.firstName} ${validationResult.data.lastName}`,
+                        },
+                },
         })
 
         if (error) {

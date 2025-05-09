@@ -4,12 +4,12 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { signup } from '../../utils/actions'
+import { signin } from '../../utils/actions'
 import { useActionState } from 'react'
 import Link from 'next/link'
 
 export default function LoginForm() {
-        const [state, action] = useActionState(signup, { errors: {} })
+        const [state, action] = useActionState(signin, { errors: {} })
 
         return (
                 <Card className='max-w-141 mx-auto mt-40'>
