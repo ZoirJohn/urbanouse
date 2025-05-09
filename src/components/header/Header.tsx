@@ -66,21 +66,26 @@ export function Header() {
                                         <Sheet open={open} onOpenChange={() => setOpen(false)}>
                                                 <SheetTitle></SheetTitle>
                                                 <Menu className='w-6 h-6' onClick={() => setOpen(!open)} />
-                                                <SheetContent side='right' className='w-62.5 px-10'>
-                                                        <div className='flex flex-col gap-4 mt-10 text-gray-800 font-medium'>
+                                                <SheetContent side='right' className='w-62.5 px-8'>
+                                                        <div className='flex flex-col items-start gap-4 mt-10 text-gray-800 font-medium'>
                                                                 {navLinks.map(({ href, label }) => (
-                                                                        <Link key={href} href={href} className={`${pathname === href ? 'text-black font-semibold' : 'hover:text-black'}`}>
+                                                                        <Link
+                                                                                key={href}
+                                                                                href={href}
+                                                                                className={`${pathname === href ? 'text-black font-semibold grow-0' : 'hover:text-black'}`}
+                                                                                onClick={() => setOpen(false)}
+                                                                        >
                                                                                 {label}
                                                                         </Link>
                                                                 ))}
-                                                                <div className='pt-4 border-t flex flex-col gap-2'>
-                                                                        <Link href='/signup'>
-                                                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer'>
+                                                                <div className='relative pt-4 flex flex-col gap-2 before:absolute before:top-0 before:bg-gray-300 before:w-45 before:h-0.25'>
+                                                                        <Link href='/signup' className='max-xs:w-22' onClick={() => setOpen(false)}>
+                                                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer w-full'>
                                                                                         Sign Up
                                                                                 </Button>
                                                                         </Link>
-                                                                        <Link href='signin'>
-                                                                                <Button className='rounded-3xl cursor-pointer'>Sign In</Button>
+                                                                        <Link href='signin' className='max-xs:w-22' onClick={() => setOpen(false)}>
+                                                                                <Button className='rounded-3xl cursor-pointer max-xs:w-22 w-full'>Sign In</Button>
                                                                         </Link>
                                                                 </div>
                                                         </div>

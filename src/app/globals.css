@@ -42,7 +42,7 @@
         --radius-lg: var(--radius);
         --radius-xl: calc(var(--radius) + 4px);
         --color-gentle: #8c8c8c;
-        --breakpoint-xs: 425px;
+        --breakpoint-xs: 26.5rem;
         --breakpoint-container: 1280px;
         --color-navy: #090c1b;
         --color-info: #1990ff;
@@ -145,7 +145,7 @@ h4 {
         color: var(--color-gentle);
 }
 section {
-        padding: 5rem 0 5rem;
+        padding: 5rem 0;
 }
 p {
         font-size: 1.125rem;
@@ -162,7 +162,16 @@ p {
         h1 {
                 font-size: 2.5rem;
         }
+        h2 {
+                font-size: 2.5rem;
+        }
+        h4 {
+                font-size: 1.5rem;
+        }
         .description {
                 font-size: 0.75rem;
+        }
+        section {
+                padding: 2.25rem 0;
         }
 }
