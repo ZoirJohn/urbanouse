@@ -21,7 +21,6 @@ function SignButton({ children }: { text: string; children: ReactNode }) {
 
 export default function LoginForm() {
         const [state, action] = useActionState(signup, { errors: {}, values: {} })
-        console.log(state)
         return (
                 <section className='py-13! max-md:py-10!'>
                         <div className='container flex max-container:text-center max-container:gap-10 max-md:flex-col max-md:items-center'>

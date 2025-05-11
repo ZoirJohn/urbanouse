@@ -107,14 +107,14 @@ export default async function Home() {
                         <section>
                                 <div className='container'>
                                         <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5 mb-20 max-md:mb-10'>
-                                                <div className='md:basis-[50%]'>
+                                                <div className='md:basis-195'>
                                                         <DescriptionBtn text='About Urbanouse' />
                                                         <h2 className='font-semibold'>
                                                                 Your Dream Home, <br className='max-md:hidden' />
                                                                 Our Expertise.
                                                         </h2>
                                                 </div>
-                                                <p className='md:basis-[45%] description'>
+                                                <p className='md:basis-125 description'>
                                                         At Urbanouse, we are committed to helping individuals and families find their perfect homes and smart investment properties. Our approach blends
                                                         personalized service, expert insights, and a dedication to excellence, ensuring your real estate journey is seamless, rewarding, and tailored to
                                                         your unique needs.
@@ -171,6 +171,20 @@ export default async function Home() {
                                         <div>
                                                 <p className='text-xl'>Total Properties</p>
                                                 <Count target={9200} />
+                                        </div>
+                                </div>
+                        </section>
+                        <section>
+                                <div className='container'>
+                                        <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5 mb-20 max-md:mb-10'>
+                                                <div className='md:basis-195'>
+                                                        <DescriptionBtn text='Fetured Properties' />
+                                                        <h2 className='font-semibold'>Discover Urbanouse Properties</h2>
+                                                </div>
+                                                <p className='md:basis-125 description'>
+                                                        Explore an exclusive selection of premium properties, meticulously curated to provide you with the best in luxury living and prime real estate
+                                                        investment options, tailored to your needs
+                                                </p>
                                         </div>
                                 </div>
                         </section>
