@@ -12,7 +12,7 @@ import image from '../../../public/img/image.png'
 
 function SignButton({ children }: { text: string; children: ReactNode }) {
         return (
-                <Button variant='secondary' className='rounded-4xl cursor-pointer w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
+                <Button variant='secondary' className='rounded-4xl w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
                         {children}
                         Log in with Google
                 </Button>
@@ -54,7 +54,7 @@ export default function LoginForm() {
                                                                         />
                                                                 </svg>
                                                         </SignButton>
-                                                        <Button variant='secondary' className='rounded-4xl cursor-pointer w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
+                                                        <Button variant='secondary' className='rounded-4xl w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
                                                                 <svg width='15' height='18' viewBox='0 0 15 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                                         <path
                                                                                 d='M12.2426 9.56283C12.2679 12.2868 14.6322 13.1933 14.6584 13.2048C14.6384 13.2687 14.2806 14.4966 13.4128 15.7649C12.6625 16.8615 11.8839 17.9539 10.6573 17.9766C9.45206 17.9988 9.06451 17.2619 7.68657 17.2619C6.30904 17.2619 5.87845 17.954 4.73755 17.9988C3.55357 18.0436 2.65196 16.8131 1.89552 15.7206C0.349775 13.4858 -0.831498 9.4057 0.754653 6.65155C1.54262 5.28383 2.95077 4.41773 4.4792 4.39552C5.64183 4.37334 6.73918 5.1777 7.44994 5.1777C8.16026 5.1777 9.49378 4.21039 10.8957 4.35245C11.4826 4.37688 13.13 4.58952 14.1879 6.13794C14.1026 6.19078 12.2222 7.28549 12.2426 9.56283ZM9.97747 2.87397C10.606 2.1131 11.0291 1.0539 10.9137 0C10.0076 0.0364156 8.91203 0.603766 8.26214 1.36422C7.67972 2.03763 7.16964 3.11548 7.30727 4.14852C8.31717 4.22665 9.34886 3.63532 9.97747 2.87397Z'
@@ -165,9 +165,13 @@ export default function LoginForm() {
                                                         </div>
                                                         {state.errors.confirmPassword &&
                                                                 state.errors.confirmPassword.map((e, i) => {
-                                                                        return <p className='text-red-600' key={i}>{e}</p>
+                                                                        return (
+                                                                                <p className='text-red-600' key={i}>
+                                                                                        {e}
+                                                                                </p>
+                                                                        )
                                                                 })}
-                                                        <Button type='submit' className='w-full h-12 rounded-4xl mt-3 cursor-pointer'>
+                                                        <Button type='submit' className='w-full h-12 rounded-4xl mt-3'>
                                                                 Sign Up
                                                         </Button>
                                                         <div className='flex gap-2 flex-wrap'>

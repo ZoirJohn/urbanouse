@@ -52,5 +52,5 @@ export default function Count({ target, duration = 1000 }: AnimatedCounterProps)
                 }
         }, [startCounting])
 
-        return <h3 ref={ref}>{count}+</h3>
+        return <h3 ref={ref} className='font-semibold'>{count}+</h3>
 }

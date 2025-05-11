@@ -53,12 +53,12 @@ export function Header() {
 
                                 <div className='hidden md:flex gap-3'>
                                         <Link href='/signup'>
-                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer'>
+                                                <Button variant='outline' className='rounded-3xl dark:text-black '>
                                                         Sign Up
                                                 </Button>
                                         </Link>
                                         <Link href='signin'>
-                                                <Button className='rounded-3xl cursor-pointer'>Sign In</Button>
+                                                <Button className='rounded-3xl'>Sign In</Button>
                                         </Link>
                                 </div>
 
@@ -80,12 +80,12 @@ export function Header() {
                                                                 ))}
                                                                 <div className='relative pt-4 flex flex-col gap-2 before:absolute before:top-0 before:bg-gray-300 before:w-45 before:h-0.25'>
                                                                         <Link href='/signup' className='max-xs:w-22' onClick={() => setOpen(false)}>
-                                                                                <Button variant='outline' className='rounded-3xl dark:text-black cursor-pointer w-full'>
+                                                                                <Button variant='outline' className='rounded-3xl dark:text-black w-full'>
                                                                                         Sign Up
                                                                                 </Button>
                                                                         </Link>
                                                                         <Link href='signin' className='max-xs:w-22' onClick={() => setOpen(false)}>
-                                                                                <Button className='rounded-3xl cursor-pointer max-xs:w-22 w-full'>Sign In</Button>
+                                                                                <Button className='rounded-3xl max-xs:w-22 w-full'>Sign In</Button>
                                                                         </Link>
                                                                 </div>
                                                         </div>

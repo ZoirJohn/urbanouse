@@ -140,6 +140,9 @@ h3 {
 h4 {
         font-size: 2.5rem;
 }
+h5{
+        font-size: 2rem;
+}
 .description {
         font-size: 1.125rem;
         color: var(--color-gentle);

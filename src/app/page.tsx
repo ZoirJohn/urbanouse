@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import Count from '@/components/ui/count'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import Link from 'next/link'
+import { HouseCard } from '@/components/ui/houseCard'
 
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
@@ -153,30 +154,30 @@ export default async function Home() {
                         <section className='bg-navy text-white dark:text-navy dark:bg-white'>
                                 <div className='container flex justify-center items-center flex-wrap gap-14 max-xs:flex-col max-xs:items-center max-xs:text-center before:bg-[url(/img/pattern.png)] before:absolute'>
                                         <div>
-                                                <p className='text-xl'>Home for Rent</p>
+                                                <p className='text-xl description'>Home for Rent</p>
                                                 <Count target={5300} />
                                         </div>
                                         <div>
-                                                <p className='text-xl'>Home to Buy</p>
+                                                <p className='text-xl description'>Home to Buy</p>
                                                 <Count target={3000} />
                                         </div>
                                         <div>
-                                                <p className='text-xl'>Agents</p>
+                                                <p className='text-xl description'>Agents</p>
                                                 <Count target={120} />
                                         </div>
                                         <div>
-                                                <p className='text-xl'>Cities Covered</p>
+                                                <p className='text-xl description'>Cities Covered</p>
                                                 <Count target={83} />
                                         </div>
                                         <div>
-                                                <p className='text-xl'>Total Properties</p>
+                                                <p className='text-xl description'>Total Properties</p>
                                                 <Count target={9200} />
                                         </div>
                                 </div>
                         </section>
                         <section>
                                 <div className='container'>
-                                        <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5 mb-20 max-md:mb-10'>
+                                        <div className='flex justify-between items-center max-md:flex-col max-md:items-start gap-5'>
                                                 <div className='md:basis-195'>
                                                         <DescriptionBtn text='Fetured Properties' />
                                                         <h2 className='font-semibold'>Discover Urbanouse Properties</h2>
@@ -185,6 +186,27 @@ export default async function Home() {
                                                         Explore an exclusive selection of premium properties, meticulously curated to provide you with the best in luxury living and prime real estate
                                                         investment options, tailored to your needs
                                                 </p>
+                                        </div>
+                                        <div className=''>
+                                                <div className='flex gap-5 justify-center py-15 col-span-3 max-md:justify-start max-lg:col-span-2 max-xs:pt-5 max-md:col-span-1 overflow-auto'>
+                                                        <Button className='rounded-3xl text-base' variant='default'>
+                                                                All Properties
+                                                        </Button>
+                                                        <Button className='rounded-3xl text-base' variant='outline'>
+                                                                Family House
+                                                        </Button>
+                                                        <Button className='rounded-3xl text-base' variant='outline'>
+                                                                Villa
+                                                        </Button>
+                                                        <Button className='rounded-3xl text-base' variant='outline'>
+                                                                Apartment
+                                                        </Button>
+                                                </div>
+                                                <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center'>
+                                                        <HouseCard />
+                                                        <HouseCard />
+                                                        <HouseCard />
+                                                </div>
                                         </div>
                                 </div>
                         </section>
