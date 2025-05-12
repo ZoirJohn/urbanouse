@@ -30,7 +30,7 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                 password: validated.data.password,
         })
 
-        if (error) console.log(error);
+        if (error) console.log(error)
 
-        return { errors: {email:['Logged']} }
+        return { errors: {} }
 }
