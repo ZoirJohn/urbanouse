@@ -24,13 +24,22 @@ export default function LoginForm() {
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>
-                                <Card className='border max-w-141.5 w-full p-10 max-lg:p-5 max-md:p-10'>
+                                <Card className='border max-w-141.5 w-full p-10 max-lg:p-5'>
                                         <CardHeader>
                                                 <CardTitle className='text-[28px]'>Join Urbanouse Today!</CardTitle>
                                                 <CardDescription className='text-lg text-gentle font-normal'>
                                                         Create an account to start saving properties, receiving alerts, and accessing expert real estate insights.
                                                 </CardDescription>
                                         </CardHeader>
+                                        <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                        Log In with Google
+                                                </Button>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                        Log In with Apple
+                                                </Button>
+                                                <p className='text-base! text-gentle col-span-2'>or continue with email</p>
+                                        </div>
                                         <CardContent>
                                                 <form action='' className='flex flex-col gap-5'>
                                                         <div className='grid grid-cols-2 gap-x-5 gap-y-3'>
