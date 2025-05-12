@@ -11,6 +11,7 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import logo from '../../../public/img/logo.svg'
 import minLogo from '../../../public/img/logoMin.svg'
+import { supabase } from '@/utils/client'
 
 const navLinks = [
         { href: '/', label: 'Home' },
@@ -25,6 +26,20 @@ export function Header() {
         const pathname = usePathname()
         const [scroll, setScroll] = useState<boolean>(false)
         const [open, setOpen] = useState<boolean>(false)
+        const [user, setUser] = useState<null | any>(null)
+
+        useEffect(() => {
+                const getUser = async () => {
+                        const {
+                                data: { user },
+                                error,
+                        } = await supabase.auth.getUser()
+                        setUser(user)
+                }
+
+                getUser()
+        }, [])
+        console.log(user);
         useEffect(() => {
                 window.addEventListener('scroll', () => setScroll(window.scrollY > 30))
                 if (window.scrollY > 30) {
@@ -33,7 +48,7 @@ export function Header() {
         }, [])
         return (
                 <header className={clsx('fixed left-0 w-full z-30 top-0 bg-[#fcfcfc]', { 'bg-[#fcfcfc]': scroll })}>
-                        <div className='container flex justify-between items-center py-4 '>
+                        <div className='container flex justify-between items-center py-4 h-17'>
                                 <Link href='/'>
                                         <Image src={logo} alt='logo' width={173} height={30} className='max-lg:hidden' />
                                         <Image src={minLogo} alt='logo' width={26} height={30} className='lg:hidden' />
@@ -52,14 +67,20 @@ export function Header() {
                                 </NavigationMenu>
 
                                 <div className='hidden md:flex gap-3'>
-                                        <Link href='/signup'>
-                                                <Button variant='outline' className='rounded-3xl dark:text-black '>
-                                                        Sign Up
-                                                </Button>
-                                        </Link>
-                                        <Link href='signin'>
-                                                <Button className='rounded-3xl'>Sign In</Button>
-                                        </Link>
+                                        {user ? (
+                                                <p>User</p>
+                                        ) : (
+                                                <>
+                                                        <Link href='/signup'>
+                                                                <Button variant='outline' className='rounded-3xl dark:text-black '>
+                                                                        Sign Up
+                                                                </Button>
+                                                        </Link>
+                                                        <Link href='signin'>
+                                                                <Button className='rounded-3xl'>Sign In</Button>
+                                                        </Link>
+                                                </>
+                                        )}
                                 </div>
 
                                 <div className='md:hidden'>
@@ -79,14 +100,20 @@ export function Header() {
                                                                         </Link>
                                                                 ))}
                                                                 <div className='relative pt-4 flex flex-col gap-2 before:absolute before:top-0 before:bg-gray-300 before:w-45 before:h-0.25'>
-                                                                        <Link href='/signup' className='max-xs:w-22' onClick={() => setOpen(false)}>
-                                                                                <Button variant='outline' className='rounded-3xl dark:text-black w-full'>
-                                                                                        Sign Up
-                                                                                </Button>
-                                                                        </Link>
-                                                                        <Link href='signin' className='max-xs:w-22' onClick={() => setOpen(false)}>
-                                                                                <Button className='rounded-3xl max-xs:w-22 w-full'>Sign In</Button>
-                                                                        </Link>
+                                                                        {user ? (
+                                                                                <p>User</p>
+                                                                        ) : (
+                                                                                <>
+                                                                                        <Link href='/signup' className='max-xs:w-22' onClick={() => setOpen(false)}>
+                                                                                                <Button variant='outline' className='rounded-3xl dark:text-black w-full'>
+                                                                                                        Sign Up
+                                                                                                </Button>
+                                                                                        </Link>
+                                                                                        <Link href='signin' className='max-xs:w-22' onClick={() => setOpen(false)}>
+                                                                                                <Button className='rounded-3xl max-xs:w-22 w-full'>Sign In</Button>
+                                                                                        </Link>
+                                                                                </>
+                                                                        )}
                                                                 </div>
                                                         </div>
                                                 </SheetContent>

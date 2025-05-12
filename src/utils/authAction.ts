@@ -1,20 +1,7 @@
-'use server'
 import { z } from 'zod'
-import { SingInState, SingUpState } from './schema'
+import { SingUpState } from './defintions'
 import { supabase } from './client'
 
-const SigninFormSchema = z.object({
-        email: z.string().email({ message: 'Please enter a valid email' }).trim(),
-        password: z
-                .string()
-                .min(8, { message: 'Be at least 8 characters long' })
-                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter' })
-                .regex(/[0-9]/, { message: 'Contain at least one number' })
-                .regex(/[^a-zA-Z0-9]/, {
-                        message: 'Contain at least one special character',
-                })
-                .trim(),
-})
 const signupSchema = z.object({
         firstName: z.string().min(1, 'Please provide your name'),
         lastName: z.string().min(1, 'Please provide your last name'),
@@ -28,8 +15,6 @@ const signupSchema = z.object({
                 .regex(/[^a-zA-Z0-9]/, { message: 'Contain at least one special character' }),
         confirmPassword: z.string(),
 })
-
-export async function signin(state: SingInState, formData: FormData) {}
 
 export async function signup(state: SingUpState, formData: FormData): Promise<{ errors: {} }> {
         const validated = signupSchema.safeParse({

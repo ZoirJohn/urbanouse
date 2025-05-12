@@ -15,7 +15,7 @@ function Box() {
 export default async function Home() {
         return (
                 <>
-                        <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-white overflow-hidden'>
+                        <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-[#fcfcfc] overflow-hidden'>
                                 <div className='container'></div>
                                 <Image src={banner} alt='banner' className='absolute bottom-0 left-1/2 -translate-x-1/2 w-full z-10 max-w-400' />
                                 <ImageAnimate />
