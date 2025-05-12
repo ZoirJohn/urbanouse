@@ -5,22 +5,23 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { signup } from '../../utils/actions'
-import { ReactNode, useActionState } from 'react'
+import { useActionState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import image from '../../../public/img/image.png'
+import { useFormStatus } from 'react-dom'
 
-function SignButton({ children }: { text: string; children: ReactNode }) {
+function Submit() {
+        const { pending } = useFormStatus()
         return (
-                <Button variant='secondary' className='rounded-4xl w-58 h-10 text-base max-container:col-span-2 max-container:w-full'>
-                        {children}
-                        Log in with Google
+                <Button className='rounded-4xl h-14 mt-3 text-base' disabled={pending}>
+                        Sign Up
                 </Button>
         )
 }
 
 export default function LoginForm() {
-        const [state, action] = useActionState(signup, { errors: {}, values: {} })
+        const [state, action] = useActionState(signup, { errors: {} })
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>
@@ -41,7 +42,7 @@ export default function LoginForm() {
                                                 <p className='text-base! text-gentle col-span-2'>or continue with email</p>
                                         </div>
                                         <CardContent>
-                                                <form action='' className='flex flex-col gap-5'>
+                                                <form action={action} className='flex flex-col gap-5'>
                                                         <div className='grid grid-cols-2 gap-x-5 gap-y-3'>
                                                                 <Label className='col-span-2 text-base'>Full Name</Label>
                                                                 <Input
@@ -99,7 +100,7 @@ export default function LoginForm() {
                                                                         className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
                                                                 />
                                                         </div>
-                                                        <Button className='rounded-4xl h-14 mt-3 text-base'>Sign Up</Button>
+                                                        <Submit />
                                                 </form>
                                                 <p className='text-base font-semibold flex justify-center items-center mt-10 gap-1'>
                                                         Already have an account?

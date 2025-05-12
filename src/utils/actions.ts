@@ -1,8 +1,7 @@
 'use server'
-
-import { createClient } from '@supabase/supabase-js'
 import { z } from 'zod'
 import { SingInState, SingUpState } from './schema'
+import { supabase } from './client'
 
 const SigninFormSchema = z.object({
         email: z.string().email({ message: 'Please enter a valid email' }).trim(),
@@ -16,7 +15,7 @@ const SigninFormSchema = z.object({
                 })
                 .trim(),
 })
-const SignupFormSchema = z.object({
+const signupSchema = z.object({
         firstName: z.string().min(1, 'Please provide your name'),
         lastName: z.string().min(1, 'Please provide your last name'),
         email: z.string().trim().email({ message: 'Please enter a valid email' }),
@@ -30,66 +29,45 @@ const SignupFormSchema = z.object({
         confirmPassword: z.string(),
 })
 
-export async function signin(state: SingInState, formData: FormData): Promise<SingInState> {
-        const validationResult = SigninFormSchema.safeParse({
+export async function signin(state: SingInState, formData: FormData) {}
+
+export async function signup(state: SingUpState, formData: FormData): Promise<{ errors: {} }> {
+        const validated = signupSchema.safeParse({
                 email: formData.get('email'),
                 password: formData.get('password'),
-        })
-
-        if (!validationResult.success) {
-                return {
-                        errors: validationResult.error.flatten().fieldErrors,
-                }
-        }
-
-        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
-        const { error } = await supabase.auth.signInWithPassword({
-                email: validationResult.data.email,
-                password: validationResult.data.password,
-        })
-
-        if (error) {
-                return {
-                        errors: { email: [error.message] },
-                }
-        }
-        return { errors: {} }
-}
-
-export async function signup(state: SingUpState, formData: FormData): Promise<SingUpState> {
-        const data = {
                 firstName: formData.get('firstName'),
                 lastName: formData.get('lastName'),
-                email: formData.get('email'),
-                password: formData.get('password'),
                 confirmPassword: formData.get('confirmPassword'),
-        }
-        const validationResult = SignupFormSchema.safeParse(data)
-
-        if (!validationResult.success) {
+        })
+        if (!validated.success) {
                 return {
-                        errors: validationResult.error.flatten().fieldErrors,
-                        // eslint-disable-next-line
-                        values: data as any,
+                        errors: validated.error.flatten().fieldErrors,
                 }
         }
-
-        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
-
-        const { error } = await supabase.auth.signUp({
-                email: validationResult.data.email,
-                password: validationResult.data.password,
+        if (validated.data.password != validated.data.confirmPassword) {
+                return {
+                        errors: {
+                                confirmPassword: ['Passwords should match'],
+                        },
+                }
+        }
+        const { data, error } = await supabase.auth.signUp({
+                email: validated.data.email,
+                password: validated.data.password,
                 options: {
                         data: {
-                                full_name: `${validationResult.data.firstName} ${validationResult.data.lastName}`,
+                                fullName: validated.data.firstName + ' ' + validated.data.lastName,
                         },
                 },
         })
 
         if (error) {
                 return {
-                        errors: { email: [error.message] },
+                        errors: {
+                                email: error,
+                        },
                 }
         }
+
         return { errors: {} }
 }

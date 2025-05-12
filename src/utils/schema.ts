@@ -1,3 +1,5 @@
+import { AuthError } from '@supabase/supabase-js'
+
 export type SingInState = {
         errors: {
                 email?: string[]
@@ -11,12 +13,5 @@ export type SingUpState = {
                 email?: string[]
                 password?: string[]
                 confirmPassword?: string[]
-        }
-        values?: {
-                firstName?: string
-                lastName?: string
-                email?: string
-                password?: string
-                confirmPassword?: string
         }
 }
