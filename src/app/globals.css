@@ -126,7 +126,7 @@
         }
 }
 .container {
-        @apply max-w-[1360px] mx-auto px-5;
+        @apply max-w-[1328px] mx-auto px-1;
 }
 h1 {
         font-size: 4.5rem;
@@ -140,7 +140,7 @@ h3 {
 h4 {
         font-size: 2.5rem;
 }
-h5{
+h5 {
         font-size: 2rem;
 }
 .description {
@@ -177,9 +177,12 @@ p {
         section {
                 padding: 2.25rem 0;
         }
+        .container {
+                @apply px-5;
+        }
 }
-@media (max-width:425px) {
-        .container{
-                @apply px-2
+@media (max-width: 425px) {
+        .container {
+                @apply px-2;
         }
 }
