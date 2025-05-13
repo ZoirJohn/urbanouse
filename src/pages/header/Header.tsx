@@ -21,7 +21,7 @@ const navLinks = [
         { href: '/contact', label: 'Contact Us' },
 ]
 
-export function Header() {
+export default function Header() {
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
