@@ -16,7 +16,7 @@ const signupSchema = z.object({
         confirmPassword: z.string(),
 })
 
-export async function signup(state: SingUpState, formData: FormData): Promise<{ errors: {} }> {
+export async function signup(state: SingUpState, formData: FormData): Promise<SingUpState> {
         const validated = signupSchema.safeParse({
                 email: formData.get('email'),
                 password: formData.get('password'),
@@ -36,7 +36,7 @@ export async function signup(state: SingUpState, formData: FormData): Promise<{ 
                         },
                 }
         }
-        const { data, error } = await supabase.auth.signUp({
+        const { error } = await supabase.auth.signUp({
                 email: validated.data.email,
                 password: validated.data.password,
                 options: {
@@ -49,7 +49,7 @@ export async function signup(state: SingUpState, formData: FormData): Promise<{ 
         if (error) {
                 return {
                         errors: {
-                                email: error,
+                                email: ['Error'],
                         },
                 }
         }

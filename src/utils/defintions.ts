@@ -1,5 +1,3 @@
-import { AuthError } from '@supabase/supabase-js'
-
 export type SingInState = {
         errors: {
                 email?: string[]

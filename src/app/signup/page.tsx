@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import image from '../../../public/img/image.png'
 import { useFormStatus } from 'react-dom'
+import { SingUpState } from '@/utils/defintions'
 
 function Submit() {
         const { pending } = useFormStatus()
@@ -21,7 +22,8 @@ function Submit() {
 }
 
 export default function LoginForm() {
-        const [state, action] = useActionState(signup, { errors: {} })
+        const initialState: SingUpState = { errors: {} }
+        const [state, action] = useActionState(signup, initialState)
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>
@@ -64,6 +66,10 @@ export default function LoginForm() {
                                                                         className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
                                                                 />
                                                         </div>
+                                                        {state.errors?.email &&
+                                                                state.errors.email.map((e, i) => {
+                                                                        return <p key={i}>{e}</p>
+                                                                })}
                                                         <div className='grid grid-cols-1 gap-y-3'>
                                                                 <Label className='col-span-2 text-base'>Email</Label>
                                                                 <Input

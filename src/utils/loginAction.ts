@@ -1,6 +1,6 @@
 'use server'
 import { z } from 'zod'
-import { SingInState, SingUpState } from './defintions'
+import { SingInState } from './defintions'
 import { supabase } from './client'
 
 const SigninFormSchema = z.object({
@@ -25,7 +25,7 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                 return { errors: validated.error.flatten().fieldErrors }
         }
 
-        const { data, error } = await supabase.auth.signInWithPassword({
+        const {  error } = await supabase.auth.signInWithPassword({
                 email: validated.data.email,
                 password: validated.data.password,
         })

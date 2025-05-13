@@ -31,11 +31,10 @@ export function Header() {
                 try {
                         const {
                                 data: { user },
-                                error,
                         } = await supabase.auth.getUser()
                         return user?.user_metadata.fullName
                 } catch (error) {
-                        return null
+                        return { error }
                 }
         }, [])
 
