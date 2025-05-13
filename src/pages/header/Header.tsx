@@ -21,14 +21,13 @@ const navLinks = [
         { href: '/contact', label: 'Contact Us' },
 ]
 
-export function Header() {
+export default function Header() {
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
         const [user, setUser] = useState<string | null>(null)
 
         const fetchUser = useCallback(async () => {
-                if (typeof window === 'undefined') return null
                 try {
                         const {
                                 data: { user },
