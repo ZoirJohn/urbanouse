@@ -28,6 +28,7 @@ export function Header() {
         const [user, setUser] = useState<string | null>(null)
 
         const fetchUser = useCallback(async () => {
+                if (typeof window === 'undefined') return null
                 try {
                         const {
                                 data: { user },
