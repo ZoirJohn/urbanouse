@@ -29,8 +29,8 @@ export default function Header() {
 
         const fetchUser = useCallback(async () => {
                 try {
-                        const { data } = await supabase.auth.getSession()
-                        return data.session?.user.user_metadata.fullName
+                        const { user } = await supabase.auth.getUser().then((res) => res.data)
+                        return user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
                 }
