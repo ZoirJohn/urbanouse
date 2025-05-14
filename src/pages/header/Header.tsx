@@ -43,11 +43,11 @@ export default function Header() {
 
                 window.addEventListener('scroll', handleScroll)
                 fetchUser().then(setUser)
-
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
         }, [fetchUser])
+        console.log(user)
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList className='flex gap-6 text-sm font-medium text-gray-600'>
