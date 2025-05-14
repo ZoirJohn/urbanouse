@@ -32,7 +32,7 @@ export default function Header() {
                         const {
                                 data: { user },
                         } = await supabase.auth.getUser()
-                        console.log(user);
+                        debugger
                         return user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
