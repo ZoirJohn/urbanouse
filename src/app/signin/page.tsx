@@ -7,9 +7,11 @@ import { Label } from '@/components/ui/label'
 import { signin } from '@/utils/loginAction'
 import { useActionState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
         const [state, action] = useActionState(signin, { errors: {} })
+        const router = useRouter()
         return (
                 <section>
                         <Card className='max-w-141 mx-auto mt-40'>
@@ -43,7 +45,14 @@ export default function LoginForm() {
                                                                         </p>
                                                                 ))}
                                                 </div>
-                                                <Link href='/forgot' className='justify-self-end'>
+                                                <Link
+                                                        href='/forgot'
+                                                        className='justify-self-end'
+                                                        onClick={() => {
+                                                                document.cookie = 'access_forgot=allowed; path=/'
+                                                                router.push('/forgot')
+                                                        }}
+                                                >
                                                         Forgot your password?
                                                 </Link>
                                                 <Button type='submit' className='w-full h-12 rounded-4xl'>

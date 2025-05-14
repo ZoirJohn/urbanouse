@@ -7,6 +7,8 @@ import Count from '@/components/ui/count'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import Link from 'next/link'
 import { HouseCard } from '@/components/ui/houseCard'
+import Filter from '@/components/ui/filter'
+import EmblaCarousel from '@/components/ui/carousel'
 
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
@@ -187,26 +189,14 @@ export default async function Home() {
                                                         investment options, tailored to your needs
                                                 </p>
                                         </div>
-                                        <div className=''>
-                                                <div className='flex gap-5 justify-center py-15 col-span-3 max-md:justify-start max-lg:col-span-2 max-xs:pt-5 max-md:col-span-1 overflow-auto'>
-                                                        <Button className='rounded-3xl text-base' variant='default'>
-                                                                All Properties
-                                                        </Button>
-                                                        <Button className='rounded-3xl text-base' variant='outline'>
-                                                                Family House
-                                                        </Button>
-                                                        <Button className='rounded-3xl text-base' variant='outline'>
-                                                                Villa
-                                                        </Button>
-                                                        <Button className='rounded-3xl text-base' variant='outline'>
-                                                                Apartment
-                                                        </Button>
-                                                </div>
-                                                <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center'>
+                                        <div>
+                                                <Filter />
+                                                <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center max-sm:hidden'>
                                                         <HouseCard />
                                                         <HouseCard />
                                                         <HouseCard />
                                                 </div>
+                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />]} />
                                         </div>
                                 </div>
                         </section>
