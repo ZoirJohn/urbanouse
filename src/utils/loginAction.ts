@@ -25,12 +25,12 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                 return { errors: validated.error.flatten().fieldErrors }
         }
 
-        const {  error } = await supabase.auth.signInWithPassword({
+        const { error } = await supabase.auth.signInWithPassword({
                 email: validated.data.email,
                 password: validated.data.password,
         })
 
-        if (error) console.log(error)
+        if (error) console.log('Error has occured')
 
         return { errors: {} }
 }

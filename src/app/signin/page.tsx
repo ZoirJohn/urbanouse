@@ -10,7 +10,6 @@ import Link from 'next/link'
 
 export default function LoginForm() {
         const [state, action] = useActionState(signin, { errors: {} })
-        console.log(state)
         return (
                 <section>
                         <Card className='max-w-141 mx-auto mt-40'>
