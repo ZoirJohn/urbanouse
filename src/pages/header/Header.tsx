@@ -32,7 +32,6 @@ export default function Header() {
                         const {
                                 data: { user },
                         } = await supabase.auth.getUser()
-                        debugger
                         return user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
@@ -51,7 +50,7 @@ export default function Header() {
                         window.removeEventListener('scroll', handleScroll)
                 }
         }, [fetchUser])
-
+        console.log(user);
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList className='flex gap-6 text-sm font-medium text-gray-600'>
