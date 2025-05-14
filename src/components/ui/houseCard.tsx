@@ -5,7 +5,7 @@ import Image from 'next/image'
 export function HouseCard() {
         return (
                 <Link href=''>
-                        <Card>
+                        <Card className='dark:bg-black'>
                                 <Image src='/img/image.png' alt='card-image' width={40} height={40} className='w-full h-106 rounded-xl' />
                                 <CardHeader>
                                         <CardTitle>$750,000</CardTitle>

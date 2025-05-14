@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { HouseCard } from '@/components/ui/houseCard'
 import Filter from '@/components/ui/filter'
 import EmblaCarousel from '@/components/ui/carousel'
+import AgentCard from '@/components/ui/agentCard'
 
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
@@ -196,7 +197,19 @@ export default async function Home() {
                                                         <HouseCard />
                                                         <HouseCard />
                                                 </div>
-                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />]} />
+                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />]} className='sm:hidden' />
+                                        </div>
+                                </div>
+                        </section>
+                        <section>
+                                <div className='container'>
+                                        <div className=''>
+                                                <DescriptionBtn text='Top Rate Agents' />
+                                                <h4 className='font-semibold'>Meet One of Our Top-Performing Agents.</h4>
+                                                <p className='md:basis-125 description'>A dedicated section highlighting an agent who’s gone above and beyond</p>
+                                        </div>
+                                        <div className='flex'>
+                                                <EmblaCarousel slides={[<AgentCard key={12} />, <AgentCard key={12} />, <AgentCard key={12} />]} className='' />
                                         </div>
                                 </div>
                         </section>

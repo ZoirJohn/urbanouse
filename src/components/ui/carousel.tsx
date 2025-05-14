@@ -8,21 +8,22 @@ import '@/app/embla.css'
 type PropType = {
         slides: ReactNode[]
         options?: EmblaOptionsType
+        className: string
 }
 
-const EmblaCarousel: React.FC<PropType> = (props) => {
+const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         const { slides, options } = props
         const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
         return (
-                <section className='embla sm:hidden'>
-                        <div className='embla__viewport' ref={emblaRef}>
-                                <div className='embla__container flex gap-5 mx-auto'>
+                <section className={'embla w-full ' + className}>
+                        <div className='embla__viewport overflow-hidden' ref={emblaRef}>
+                                <div className='embla__container flex jusify-center gap-5 mx-auto w-full'>
                                         {slides.map((index, i) => (
-                                                <div className='embla__slide grow-0 shrink-0' key={i}>
-                                                        <div className='embla__slide__number'>{index}</div>
+                                                <div className='embla__slide' key={i}>
+                                                        {index}
                                                 </div>
                                         ))}
                                 </div>
