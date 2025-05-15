@@ -68,19 +68,24 @@ export default function Header() {
         )
 
         const renderAuthButtons = (isMobile = false) => {
-                if (user) return <p className='text-base!'>{user}</p>
                 return (
                         <>
-                                <Link href='/signup' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
-                                        <Button variant='outline' className='rounded-3xl dark:text-black w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
-                                                Sign Up
-                                        </Button>
-                                </Link>
-                                <Link href='signin' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
-                                        <Button className='rounded-3xl max-xs:w-22 w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
-                                                Sign In
-                                        </Button>
-                                </Link>
+                                {user ? (
+                                        <p className='text-base! dark:text-black'>{user}</p>
+                                ) : (
+                                        <>
+                                                <Link href='/signup' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
+                                                        <Button variant='outline' className='rounded-3xl dark:text-black w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
+                                                                Sign Up
+                                                        </Button>
+                                                </Link>
+                                                <Link href='signin' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
+                                                        <Button className='rounded-3xl max-xs:w-22 w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
+                                                                Sign In
+                                                        </Button>
+                                                </Link>
+                                        </>
+                                )}
                         </>
                 )
         }

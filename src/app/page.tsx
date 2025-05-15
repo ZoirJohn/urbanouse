@@ -209,7 +209,26 @@ export default async function Home() {
                                                 <p className='md:basis-125 description'>A dedicated section highlighting an agent who’s gone above and beyond</p>
                                         </div>
                                         <div className='flex'>
-                                                <EmblaCarousel slides={[<AgentCard key={12} />, <AgentCard key={12} />, <AgentCard key={12} />]} className='' />
+                                                <EmblaCarousel
+                                                        slides={[
+                                                                <AgentCard key={12} />,
+                                                                <AgentCard key={12} />,
+                                                                <AgentCard key={12} />,
+                                                                <AgentCard key={12} />,
+                                                                <AgentCard key={12} />,
+                                                                <AgentCard key={12} />,
+                                                        ]}
+                                                        className=''
+                                                />
+                                        </div>
+                                </div>
+                        </section>
+                        <section className='bg-[#f5f5f5]'>
+                                <div className='container'>
+                                        <div className=''>
+                                                <DescriptionBtn text='Testimonial' />
+                                                <h2 className='font-semibold'>What People Are Saying</h2>
+                                                <p className='md:basis-125 description'>Real feedback from clients who’ve experienced the Urbanouse difference.</p>
                                         </div>
                                 </div>
                         </section>

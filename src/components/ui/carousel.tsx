@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './carouselDot'
 import useEmblaCarousel from 'embla-carousel-react'
-import '@/app/embla.css'
 
 type PropType = {
         slides: ReactNode[]
@@ -18,7 +17,7 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
         return (
-                <section className={'embla w-full ' + className}>
+                <div className={'embla w-full height-76 ' + className}>
                         <div className='embla__viewport overflow-hidden' ref={emblaRef}>
                                 <div className='embla__container flex jusify-center gap-5 mx-auto w-full'>
                                         {slides.map((index, i) => (
@@ -30,17 +29,19 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
                         </div>
 
                         <div className='embla__controls'>
-                                <div className='embla__dots'>
+                                <div className='embla__dots flex justify-center'>
                                         {scrollSnaps.map((_, index) => (
                                                 <DotButton
                                                         key={index}
                                                         onClick={() => onDotButtonClick(index)}
-                                                        className={'embla__dot'.concat(index === selectedIndex ? ' embla__dot--selected' : '')}
+                                                        className={'embla__dot w-4 after:cursor-pointer after:h-2 after:w-2 after:flex after:bg-[#d9d9d9] after:rounded-4xl'.concat(
+                                                                index === selectedIndex ? ' embla__dot--selected after:scale-150 after:bg-black' : ''
+                                                        )}
                                                 />
                                         ))}
                                 </div>
                         </div>
-                </section>
+                </div>
         )
 }
 
