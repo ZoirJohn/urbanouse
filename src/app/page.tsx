@@ -197,7 +197,7 @@ export default async function Home() {
                                                         <HouseCard />
                                                         <HouseCard />
                                                 </div>
-                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />]} className='sm:hidden' />
+                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />, <HouseCard key={13} />]} className='sm:hidden' />
                                         </div>
                                 </div>
                         </section>
