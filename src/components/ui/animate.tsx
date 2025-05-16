@@ -10,14 +10,16 @@ export function ImageAnimate() {
                 setTimeout(() => setState(true))
         }, [])
         return (
-                <Image
-                        src={urb}
-                        alt='urbanouse'
-                        id='urbanouse'
-                        className={clsx('absolute left-1/2 -translate-x-1/2 top-40 transition-all duration-500 max-lg:top-10', {
-                                'opacity-0 translate-y-40': !animate,
-                                'opacity-100 translate-y-0': animate,
-                        })}
-                />
+                <h1>
+                        <Image
+                                src={urb}
+                                alt='urbanouse'
+                                id='urbanouse'
+                                className={clsx('absolute left-1/2 -translate-x-1/2 top-40 transition-all duration-500 max-lg:top-10', {
+                                        'opacity-0 translate-y-40': !animate,
+                                        'opacity-100 translate-y-0': animate,
+                                })}
+                        />
+                </h1>
         )
 }

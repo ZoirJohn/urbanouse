@@ -2,8 +2,9 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
-import Header from '@/pages/header/Header'
+import Header from '@/components/header/Header'
 import { ThemeProvider } from '@/components/themeProvider'
+import Footer from '@/components/footer/Footer'
 
 const manrope = Plus_Jakarta_Sans({
         variable: '--manrope',
@@ -26,6 +27,7 @@ export default function RootLayout({
                                 <ThemeProvider defaultTheme='light' attribute='class' enableSystem disableTransitionOnChange>
                                         <Header />
                                         <main className='mt-17 max-md:mt-15'>{children}</main>
+                                        <Footer />
                                 </ThemeProvider>
                                 <Analytics />
                         </body>

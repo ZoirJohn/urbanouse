@@ -206,7 +206,7 @@ export default async function Home() {
                         </section>
                         <section>
                                 <div className='container'>
-                                        <div className=''>
+                                        <div className='mb-15 max-md:mb-5'>
                                                 <DescriptionBtn text='Top Rate Agents' />
                                                 <h4 className='font-semibold'>Meet One of Our Top-Performing Agents.</h4>
                                                 <p className='md:basis-125 description'>A dedicated section highlighting an agent who’s gone above and beyond</p>
@@ -258,7 +258,7 @@ export default async function Home() {
                                 </div>
                         </section>
                         <section>
-                                <div className='container flex flex-row-reverse gap-20'>
+                                <div className='container flex flex-row-reverse gap-20 max-md:flex-col max-md:gap-5'>
                                         <div className='basis-1/2 flex flex-col items-end text-right'>
                                                 <DescriptionBtn text="FAQ's" />
                                                 <h2 className='font-semibold '>Frequently Asked Questions</h2>

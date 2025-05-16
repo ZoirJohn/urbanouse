@@ -128,9 +128,6 @@
 .container {
         @apply max-w-[1328px] mx-auto px-1;
 }
-h1 {
-        font-size: 4.5rem;
-}
 h2 {
         font-size: 4.5rem;
 }
@@ -154,17 +151,11 @@ p {
         font-size: 1.125rem;
 }
 @media (max-width: 1024px) {
-        h1 {
-                font-size: 3.5rem;
-        }
         .description {
                 font-size: 1rem;
         }
 }
 @media (max-width: 768px) {
-        h1 {
-                font-size: 2.5rem;
-        }
         h2 {
                 font-size: 2.5rem;
         }
