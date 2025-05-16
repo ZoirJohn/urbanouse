@@ -30,6 +30,7 @@ export default function Header() {
         const fetchUser = useCallback(async () => {
                 try {
                         const user = await supabase.auth.getSession().then((res) => res.data.session?.user)
+                        console.log(supabase.auth)
                         return user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
@@ -42,7 +43,7 @@ export default function Header() {
                 }
 
                 window.addEventListener('scroll', handleScroll)
-                fetchUser()
+                fetchUser().then(setUser)
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
