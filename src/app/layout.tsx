@@ -24,7 +24,7 @@ export default function RootLayout({
         return (
                 <html lang='en' suppressHydrationWarning>
                         <body className={`${manrope.className} antialiased font-sans`}>
-                                <ThemeProvider defaultTheme='light' attribute='class' enableSystem disableTransitionOnChange>
+                                <ThemeProvider defaultTheme='system' attribute='class' enableSystem disableTransitionOnChange>
                                         <Header />
                                         <main className='mt-17 max-md:mt-15'>{children}</main>
                                         <Footer />

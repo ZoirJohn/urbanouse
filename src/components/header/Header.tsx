@@ -42,7 +42,7 @@ export default function Header() {
                 }
 
                 window.addEventListener('scroll', handleScroll)
-                fetchUser().then(setUser)
+                fetchUser()
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
@@ -75,7 +75,7 @@ export default function Header() {
                                 ) : (
                                         <>
                                                 <Link href='/signup' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
-                                                        <Button variant='outline' className='rounded-3xl dark:text-black w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
+                                                        <Button variant='outline' className='rounded-3xl dark:text-black w-full dark:bg-white' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
                                                                 Sign Up
                                                         </Button>
                                                 </Link>
