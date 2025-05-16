@@ -7,8 +7,7 @@ import clsx from 'clsx'
 export function ImageAnimate() {
         const [animate, setState] = useState(false)
         useEffect(() => {
-                const timeout = setTimeout(() => setState(true))
-                return () => clearTimeout(timeout)
+                setTimeout(() => setState(true))
         }, [])
         return (
                 <Image

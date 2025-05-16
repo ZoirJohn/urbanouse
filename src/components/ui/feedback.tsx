@@ -10,18 +10,18 @@ type PropType = {
         className: string
 }
 
-const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
+const Feedback: React.FC<PropType> = ({ className, ...props }) => {
         const { slides, options } = props
         const [emblaRef, emblaApi] = useEmblaCarousel(options)
 
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
 
         return (
-                <div className={'embla w-full height-76 ' + className}>
+                <div className={'embla w-full' + className}>
                         <div className='embla__viewport overflow-hidden' ref={emblaRef}>
                                 <div className='embla__container flex jusify-center gap-5 mx-auto w-full'>
                                         {slides.map((index, i) => (
-                                                <div className='embla__slide' key={i}>
+                                                <div className='embla__slide w-full shrink-0' key={i}>
                                                         {index}
                                                 </div>
                                         ))}
@@ -45,4 +45,4 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         )
 }
 
-export default EmblaCarousel
+export default Feedback
