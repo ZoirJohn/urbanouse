@@ -12,6 +12,7 @@ import EmblaCarousel from '@/components/ui/carousel'
 import AgentCard from '@/components/ui/agentCard'
 import Feedback from '@/components/ui/feedback'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { randomUUID } from 'crypto'
 
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
@@ -230,23 +231,23 @@ export default async function Home() {
                                         <div className=''>
                                                 <DescriptionBtn text='Testimonial' />
                                                 <h2 className='font-semibold'>What People Are Saying</h2>
-                                                <p className='md:basis-125 description'>Real feedback from clients who’ve experienced the Urbanouse difference.</p>
+                                                <p className='md:basis-125 description'>Real feedback from clients who&apos;ve experienced the Urbanouse difference.</p>
                                         </div>
 
                                         <Feedback
                                                 slides={[
-                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2'>
+                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
                                                                 <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
                                                                         “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step.
-                                                                        We couldn’t be happier with our new home.”
+                                                                        We couldn&apos;t be happier with our new home.”
                                                                 </h5>
                                                                 <p className=''>Sarah & Michael Stone</p>
                                                                 <p className='description text-base!'>Homeowners</p>
                                                         </div>,
-                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2'>
+                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
                                                                 <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
                                                                         “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step.
-                                                                        We couldn’t be happier with our new home.”
+                                                                        We couldn&apos;t be happier with our new home.”
                                                                 </h5>
                                                                 <p className=''>Sarah & Michael Stone</p>
                                                                 <p className='description text-base!'>Homeowners</p>
@@ -262,7 +263,7 @@ export default async function Home() {
                                                 <DescriptionBtn text="FAQ's" />
                                                 <h2 className='font-semibold '>Frequently Asked Questions</h2>
                                                 <p className='description'>
-                                                        Have questions about buying, selling, or renting with Urbanouse? We’ve got the answers to help guide you through the process.
+                                                        Have questions about buying, selling, or renting with Urbanouse? We&apos;ve got the answers to help guide you through the process.
                                                 </p>
                                         </div>
                                         <div className='basis-1/2'>
@@ -271,35 +272,40 @@ export default async function Home() {
                                                                 <AccordionTrigger className='cursor-pointer text-lg'>How do I start searching for a property with Urbanouse?</AccordionTrigger>
                                                                 <AccordionContent className='text-gentle pr-4 text-base'>
                                                                         You can begin by using our property search tool, which allows you to filter by location, property type, price range, and other
-                                                                        features. Once you find a property you're interested in, simply click 'View Details' to learn more or schedule a visit.
+                                                                        features. Once you find a property you&apos;re interested in, simply click &apos;View Details&apos; to learn more or schedule a
+                                                                        visit.
                                                                 </AccordionContent>
                                                         </AccordionItem>
                                                         <AccordionItem value='item-2'>
                                                                 <AccordionTrigger className='cursor-pointer text-lg'>What services does Urbanouse offer for first-time homebuyers?</AccordionTrigger>
                                                                 <AccordionContent className='text-gentle pr-4 text-base'>
                                                                         You can begin by using our property search tool, which allows you to filter by location, property type, price range, and other
-                                                                        features. Once you find a property you're interested in, simply click 'View Details' to learn more or schedule a visit.
+                                                                        features. Once you find a property you&apos;re interested in, simply click &apos;View Details&apos; to learn more or schedule a
+                                                                        visit.
                                                                 </AccordionContent>
                                                         </AccordionItem>
                                                         <AccordionItem value='item-3'>
                                                                 <AccordionTrigger className='cursor-pointer text-lg'>Can Urbanouse help me sell my property?</AccordionTrigger>
                                                                 <AccordionContent className='text-gentle pr-4 text-base'>
                                                                         You can begin by using our property search tool, which allows you to filter by location, property type, price range, and other
-                                                                        features. Once you find a property you're interested in, simply click 'View Details' to learn more or schedule a visit.
+                                                                        features. Once you find a property you&apos;re interested in, simply click &apos;View Details&apos; to learn more or schedule a
+                                                                        visit.
                                                                 </AccordionContent>
                                                         </AccordionItem>
                                                         <AccordionItem value='item-4'>
                                                                 <AccordionTrigger className='cursor-pointer text-lg'>What types of properties does Urbanouse specialize in?</AccordionTrigger>
                                                                 <AccordionContent className='text-gentle pr-4 text-base'>
                                                                         You can begin by using our property search tool, which allows you to filter by location, property type, price range, and other
-                                                                        features. Once you find a property you're interested in, simply click 'View Details' to learn more or schedule a visit.
+                                                                        features. Once you find a property you&apos;re interested in, simply click &apos;View Details&apos; to learn more or schedule a
+                                                                        visit.
                                                                 </AccordionContent>
                                                         </AccordionItem>
                                                         <AccordionItem value='item-5'>
                                                                 <AccordionTrigger className='cursor-pointer text-lg'>Can I schedule a visit to view properties?</AccordionTrigger>
                                                                 <AccordionContent className='text-gentle pr-4 text-base'>
                                                                         You can begin by using our property search tool, which allows you to filter by location, property type, price range, and other
-                                                                        features. Once you find a property you're interested in, simply click 'View Details' to learn more or schedule a visit.
+                                                                        features. Once you find a property you&apos;re interested in, simply click &apos;View Details&apos; to learn more or schedule a
+                                                                        visit.
                                                                 </AccordionContent>
                                                         </AccordionItem>
                                                 </Accordion>

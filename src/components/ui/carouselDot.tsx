@@ -19,11 +19,11 @@ export const useDotButton = (emblaApi?: EmblaCarouselType): UseDotButtonType => 
                 [emblaApi]
         )
 
-        const onInit = useCallback((emblaApi: any) => {
+        const onInit = useCallback((emblaApi: EmblaCarouselType) => {
                 setScrollSnaps(emblaApi.scrollSnapList())
         }, [])
 
-        const onSelect = useCallback((emblaApi: any) => {
+        const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
                 setSelectedIndex(emblaApi.selectedScrollSnap())
         }, [])
 
