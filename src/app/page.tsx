@@ -140,14 +140,14 @@ export default async function Home() {
                                                 <div className='flex md:justify-center justify-end items-center max-lg:justify-center max-xs:col-span-2 gap-4 md:flex-col'>
                                                         <Link
                                                                 href=''
-                                                                className='w-18 h-18 rounded-[50%] border border-black flex items-center gap-4 justify-center max-xs:w-full max-xs:rounded-3xl max-xs:h-12'
+                                                                className='w-18 h-18 rounded-[50%] border border-black dark:border-white flex items-center gap-4 justify-center max-xs:w-full max-xs:rounded-3xl max-xs:h-12'
                                                         >
                                                                 <svg width='23' height='22' viewBox='0 0 23 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                                         <path
                                                                                 fillRule='evenodd'
                                                                                 clipRule='evenodd'
                                                                                 d='M6.5 6.55651e-07L21.5 0C21.7652 0 22.0196 0.105357 22.2071 0.292893C22.3946 0.48043 22.5 0.734784 22.5 1V16C22.5 16.5523 22.0523 17 21.5 17C20.9477 17 20.5 16.5523 20.5 16V3.41421L2.20711 21.7071C1.81658 22.0976 1.18342 22.0976 0.792893 21.7071C0.402369 21.3166 0.402369 20.6834 0.792893 20.2929L19.0858 2L6.5 2C5.94771 2 5.5 1.55229 5.5 1C5.5 0.447716 5.94771 6.55651e-07 6.5 6.55651e-07Z'
-                                                                                fill='black'
+                                                                                className='fill-accent-foreground'
                                                                         />
                                                                 </svg>
                                                                 <p className='xs:hidden text-base font-semibold'>More projects</p>
@@ -226,7 +226,7 @@ export default async function Home() {
                                         </div>
                                 </div>
                         </section>
-                        <section className='bg-[#f5f5f5]'>
+                        <section className='bg-[#f5f5f5] dark:bg-transparent'>
                                 <div className='container flex flex-col gap-20 max-sm:gap-5'>
                                         <div className=''>
                                                 <DescriptionBtn text='Testimonial' />

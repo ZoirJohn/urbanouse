@@ -71,7 +71,7 @@ export default function Header() {
                 return (
                         <>
                                 {user ? (
-                                        <p className='text-base! dark:text-black'>{user}</p>
+                                        <p className='text-base! dark:text-gray-400'>{user}</p>
                                 ) : (
                                         <>
                                                 <Link href='/signup' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
@@ -94,14 +94,14 @@ export default function Header() {
                 <div className='md:hidden'>
                         <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                                 <SheetTitle></SheetTitle>
-                                <Menu className='w-6 h-6' onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+                                <Menu className='w-6 h-6 text-black' onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
                                 <SheetContent side='right' className='w-62.5 px-8'>
                                         <div className='flex flex-col items-start gap-4 mt-10 text-gray-800 font-medium'>
                                                 {navLinks.map(({ href, label }) => (
                                                         <Link
                                                                 key={href}
                                                                 href={href}
-                                                                className={clsx('hover:text-black', {
+                                                                className={clsx('hover:text-black dark:text-white', {
                                                                         'text-black font-semibold grow-0': pathname === href,
                                                                 })}
                                                                 onClick={() => setIsMobileMenuOpen(false)}

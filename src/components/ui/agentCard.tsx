@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 export default function AgentCard() {
         return (
-                <Card className='w-79 gap-0'>
+                <Card className='w-79 gap-0 dark:bg-transparent'>
                         <CardHeader>
                                 <Image src='/img/image.png' width={315} height={300} alt='image' className='rounded-xl' />
                                 <CardTitle className='text-[1.25rem]'>Jaydon George</CardTitle>

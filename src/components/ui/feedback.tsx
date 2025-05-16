@@ -35,7 +35,7 @@ const Feedback: React.FC<PropType> = ({ className, ...props }) => {
                                                         key={index}
                                                         onClick={() => onDotButtonClick(index)}
                                                         className={'embla__dot w-4 after:cursor-pointer after:h-2 after:w-2 after:flex after:bg-[#d9d9d9] after:rounded-4xl'.concat(
-                                                                index === selectedIndex ? ' embla__dot--selected after:scale-150 after:bg-black' : ''
+                                                                index === selectedIndex ? ' embla__dot--selected after:scale-150 after:bg-black after:dark:bg-gray-700' : ''
                                                         )}
                                                 />
                                         ))}
