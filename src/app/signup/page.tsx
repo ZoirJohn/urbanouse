@@ -4,13 +4,13 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { signup } from '../../utils/authAction'
+import { signup } from '@/actions/authAction'
 import { useActionState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import image from '../../../public/img/image.png'
 import { useFormStatus } from 'react-dom'
-import { SingUpState } from '@/utils/defintions'
+import { SingUpState } from '@/utils/definitions'
 
 function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()

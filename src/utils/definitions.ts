@@ -3,6 +3,10 @@ export type SingInState = {
                 email?: string[]
                 password?: string[]
         }
+        values: {
+                email?: string
+                password?: string
+        }
 }
 export type SingUpState = {
         errors: {

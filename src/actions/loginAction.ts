@@ -1,7 +1,8 @@
 'use server'
 import { z } from 'zod'
-import { SingInState } from './defintions'
-import { supabase } from './client'
+import { SingInState } from '@/utils/definitions'
+import { supabase } from '@/utils/client'
+import { redirect } from 'next/navigation'
 
 const SigninFormSchema = z.object({
         email: z.string().email({ message: 'Please enter a valid email' }).trim(),
@@ -17,12 +18,14 @@ const SigninFormSchema = z.object({
 })
 
 export async function signin(state: SingInState, formData: FormData): Promise<SingInState> {
-        const validated = SigninFormSchema.safeParse({
+        const data = {
                 email: formData.get('email'),
                 password: formData.get('password'),
-        })
+        }
+        const validated = SigninFormSchema.safeParse(data)
+
         if (!validated.success) {
-                return { errors: validated.error.flatten().fieldErrors }
+                return { errors: validated.error.flatten().fieldErrors, values: {} }
         }
 
         const { error } = await supabase.auth.signInWithPassword({
@@ -30,7 +33,14 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                 password: validated.data.password,
         })
 
-        if (error) console.log('Error has occured')
-
-        return { errors: {} }
+        if (error) {
+                return {
+                        errors: {
+                                password: [error.message],
+                        },
+                        values: {},
+                }
+        }
+        redirect('/')
+        return { errors: {}, values: {} }
 }
