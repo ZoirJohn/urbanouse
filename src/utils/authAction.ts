@@ -17,42 +17,50 @@ const signupSchema = z.object({
 })
 
 export async function signup(state: SingUpState, formData: FormData): Promise<SingUpState> {
-        const validated = signupSchema.safeParse({
-                email: formData.get('email'),
-                password: formData.get('password'),
-                firstName: formData.get('firstName'),
-                lastName: formData.get('lastName'),
-                confirmPassword: formData.get('confirmPassword'),
-        })
-        if (!validated.success) {
-                return {
-                        errors: validated.error.flatten().fieldErrors,
-                }
-        }
-        if (validated.data.password != validated.data.confirmPassword) {
-                return {
-                        errors: {
-                                confirmPassword: ['Passwords should match'],
-                        },
-                }
-        }
-        const { error } = await supabase.auth.signUp({
-                email: validated.data.email,
-                password: validated.data.password,
-                options: {
-                        data: {
-                                fullName: validated.data.firstName + ' ' + validated.data.lastName,
-                        },
-                },
-        })
-
-        if (error) {
-                return {
-                        errors: {
-                                email: ['Error'],
-                        },
-                }
+        const data = {
+                email: formData.get('email') as string,
+                password: formData.get('password') as string,
+                firstName: formData.get('firstName') as string,
+                lastName: formData.get('lastName') as string,
+                confirmPassword: formData.get('confirmPassword') as string,
         }
 
-        return { errors: {} }
+        // const validated = signupSchema.safeParse(data)
+
+        // if (!validated.success) {
+        //         return {
+        //                 errors: validated.error.flatten().fieldErrors,
+        //                 values: data,
+        //         }
+        // }
+        // if (data.password !== data.confirmPassword) {
+        //         return {
+        //                 errors: {
+        //                         confirmPassword: ['Passwords should match'],
+        //                 },
+        //                 values: data,
+        //         }
+        // }
+        // const { error } = await supabase.auth.signUp({
+        //         email: validated.data.email,
+        //         password: validated.data.password,
+        //         options: {
+        //                 data: {
+        //                         fullName: validated.data.firstName + ' ' + validated.data.lastName,
+        //                 },
+        //         },
+        // })
+
+        // if (error) {
+        //         return {
+        //                 errors: {
+        //                         email: ['Error'],
+        //                 },
+        //                 values: data,
+        //         }
+        // }
+        await new Promise((resolve) => {
+                setTimeout(resolve, 5000)
+        })
+        return { errors: {}, values: { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' } }
 }

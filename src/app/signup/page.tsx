@@ -12,18 +12,125 @@ import image from '../../../public/img/image.png'
 import { useFormStatus } from 'react-dom'
 import { SingUpState } from '@/utils/defintions'
 
-function Submit() {
+function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()
         return (
-                <Button className='rounded-4xl h-14 mt-3 text-base' disabled={pending}>
-                        Sign Up
-                </Button>
+                <>
+                        <div className='grid grid-cols-2 gap-x-5 gap-y-3 relative'>
+                                <Label className='col-span-2 text-base'>Full Name</Label>
+                                <Input
+                                        id='name'
+                                        name='firstName'
+                                        placeholder='First Name'
+                                        type='text'
+                                        aria-describedby='name-input'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
+                                        defaultValue={state.values.firstName}
+                                        disabled={pending}
+                                />
+                                <Input
+                                        id='surname'
+                                        name='lastName'
+                                        placeholder='Last Name'
+                                        autoComplete='family-name'
+                                        type='text'
+                                        aria-describedby='surname-input'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
+                                        defaultValue={state.values.lastName}
+                                        disabled={pending}
+                                />
+                                {state.errors.firstName &&
+                                        state.errors.firstName.map((e, key) => {
+                                                return (
+                                                        <p className='text-red-600' key={key}>
+                                                                {e}
+                                                        </p>
+                                                )
+                                        })}
+                                {state.errors.lastName &&
+                                        state.errors.lastName.map((e, key) => {
+                                                return (
+                                                        <p className='text-red-600' key={key}>
+                                                                {e}
+                                                        </p>
+                                                )
+                                        })}
+                        </div>
+                        <div className='grid grid-cols-1 gap-y-3 relative'>
+                                <Label className='col-span-2 text-base'>Email</Label>
+                                <Input
+                                        id='email'
+                                        name='email'
+                                        placeholder='Email'
+                                        autoComplete='email'
+                                        type='email'
+                                        aria-describedby='email-input'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base col-span-2'
+                                        defaultValue={state.values.email}
+                                        disabled={pending}
+                                />
+                                {state.errors.email &&
+                                        state.errors.email.map((e, key) => {
+                                                return (
+                                                        <p className='text-red-600' key={key}>
+                                                                {e}
+                                                        </p>
+                                                )
+                                        })}
+                        </div>
+                        <div className='grid grid-cols-1 gap-y-3 relative'>
+                                <Label className='col-span-2 text-base'>Password</Label>
+                                <Input
+                                        id='password'
+                                        name='password'
+                                        placeholder='Create your password'
+                                        autoComplete='new-password'
+                                        type='password'
+                                        aria-describedby='password-input'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base col-span-2'
+                                        defaultValue={state.values.password}
+                                        disabled={pending}
+                                />
+                                {state.errors.password &&
+                                        state.errors.password.map((e, key) => {
+                                                return (
+                                                        <p className='text-red-600 col-span-2' key={key}>
+                                                                {e}
+                                                        </p>
+                                                )
+                                        })}
+                        </div>
+                        <div className='grid grid-cols-1 gap-y-3 relative'>
+                                <Label className='col-span-2 text-base'>Confirm Password</Label>
+                                <Input
+                                        id='confirmPassword'
+                                        name='confirmPassword'
+                                        placeholder='Confirm your password'
+                                        autoComplete='new-password'
+                                        type='password'
+                                        aria-describedby='confirmPassword-input'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
+                                        defaultValue={state.values.confirmPassword}
+                                        disabled={pending}
+                                />
+                                {state.errors.confirmPassword &&
+                                        state.errors.confirmPassword.map((e, key) => {
+                                                return (
+                                                        <p className='text-red-600 col-span-2' key={key}>
+                                                                {e}
+                                                        </p>
+                                                )
+                                        })}
+                        </div>
+                        <Button className='rounded-4xl h-14 mt-3 text-base' disabled={pending}>
+                                Sign Up
+                        </Button>
+                </>
         )
 }
 
 export default function LoginForm() {
-        const initialState: SingUpState = { errors: {} }
-        const [state, action] = useActionState(signup, initialState)
+        const [state, action] = useActionState(signup, { errors: {}, values: {} })
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>
@@ -45,68 +152,7 @@ export default function LoginForm() {
                                         </div>
                                         <CardContent>
                                                 <form action={action} className='flex flex-col gap-5'>
-                                                        <div className='grid grid-cols-2 gap-x-5 gap-y-3'>
-                                                                <Label className='col-span-2 text-base'>Full Name</Label>
-                                                                <Input
-                                                                        id='name'
-                                                                        name='firstName'
-                                                                        placeholder='First Name'
-                                                                        autoComplete='name'
-                                                                        type='text'
-                                                                        aria-describedby='name-input'
-                                                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
-                                                                />
-                                                                <Input
-                                                                        id='surname'
-                                                                        name='lastName'
-                                                                        placeholder='Last Name'
-                                                                        autoComplete='family-name'
-                                                                        type='text'
-                                                                        aria-describedby='surname-input'
-                                                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
-                                                                />
-                                                        </div>
-                                                        {state.errors?.email &&
-                                                                state.errors.email.map((e, i) => {
-                                                                        return <p key={i}>{e}</p>
-                                                                })}
-                                                        <div className='grid grid-cols-1 gap-y-3'>
-                                                                <Label className='col-span-2 text-base'>Email</Label>
-                                                                <Input
-                                                                        id='email'
-                                                                        name='email'
-                                                                        placeholder='Email'
-                                                                        autoComplete='email'
-                                                                        type='email'
-                                                                        aria-describedby='email-input'
-                                                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
-                                                                />
-                                                        </div>
-                                                        <div className='grid grid-cols-1 gap-y-3'>
-                                                                <Label className='col-span-2 text-base'>Password</Label>
-                                                                <Input
-                                                                        id='password'
-                                                                        name='password'
-                                                                        placeholder='Create your password'
-                                                                        autoComplete='new-password'
-                                                                        type='password'
-                                                                        aria-describedby='password-input'
-                                                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
-                                                                />
-                                                        </div>
-                                                        <div className='grid grid-cols-1 gap-y-3'>
-                                                                <Label className='col-span-2 text-base'>Confirm Password</Label>
-                                                                <Input
-                                                                        id='confirmPassword'
-                                                                        name='confirmPassword'
-                                                                        placeholder='Confirm your password'
-                                                                        autoComplete='new-password'
-                                                                        type='password'
-                                                                        aria-describedby='confirmPassword-input'
-                                                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
-                                                                />
-                                                        </div>
-                                                        <Submit />
+                                                        <FormControls state={state} />
                                                 </form>
                                                 <p className='text-base font-semibold flex justify-center items-center mt-10 gap-1'>
                                                         Already have an account?
