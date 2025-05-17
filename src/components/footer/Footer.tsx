@@ -3,7 +3,7 @@ import { Button } from '../ui/button'
 
 export default function Footer() {
         return (
-                <footer>
+                <footer >
                         <div className='bg-[url(/img/ctabanner.png)] dark:bg-[url(/img/ctabanner.png)] bg-cover bg-no-repeat bg-center text-white text-center py-40'>
                                 <div className='container flex flex-col items-center justify-center text-center'>
                                         <h3 className='font-semibold mb-5 max-xs:text-3xl!'>

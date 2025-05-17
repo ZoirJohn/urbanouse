@@ -9,16 +9,28 @@ import { useActionState } from 'react'
 import Link from 'next/link'
 import { SingInState } from '@/utils/definitions'
 import { useFormStatus } from 'react-dom'
+import clsx from 'clsx'
+import { LoaderCircle } from 'lucide-react'
 
 function FormControls({ state }: { state: SingInState }) {
         const { pending } = useFormStatus()
         return (
                 <>
+                        {pending && <LoaderCircle className='animate-spin' />}
                         <div className='grid gap-3'>
                                 <Label htmlFor='email' className='text-base'>
                                         Username or Email
                                 </Label>
-                                <Input id='email' name='email' type='email' placeholder='you@example.com' autoComplete='username' className='rounded-4xl p-4 h-14' disabled={pending} />
+                                <Input
+                                        id='email'
+                                        name='email'
+                                        type='email'
+                                        placeholder='you@example.com'
+                                        autoComplete='username'
+                                        className='rounded-4xl p-4 h-14'
+                                        disabled={pending}
+                                        defaultValue={state.values.email}
+                                />
                                 {state.errors.email &&
                                         state.errors.email.map((error, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
@@ -30,7 +42,16 @@ function FormControls({ state }: { state: SingInState }) {
                                 <Label htmlFor='password' className='text-base'>
                                         Password
                                 </Label>
-                                <Input id='password' name='password' type='password' placeholder='••••••••' autoComplete='new-password' className='rounded-4xl p-4 h-14' disabled={pending} />
+                                <Input
+                                        id='password'
+                                        name='password'
+                                        type='password'
+                                        placeholder='••••••••'
+                                        autoComplete='new-password'
+                                        className={clsx({ 'animate-pulse': pending }, 'rounded-4xl p-4 h-14')}
+                                        disabled={pending}
+                                        defaultValue={state.values.password}
+                                />
                                 {state.errors.password &&
                                         state.errors.password.map((password, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
