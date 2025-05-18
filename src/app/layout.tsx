@@ -9,7 +9,7 @@ import Footer from '@/components/footer/Footer'
 const manrope = Plus_Jakarta_Sans({
         variable: '--manrope',
         subsets: ['latin'],
-        weight: ['400', '800', '600', '500', '400'],
+        weight: ['400', '700', '800', '600', '500', '400'],
 })
 
 export const metadata: Metadata = {

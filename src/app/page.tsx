@@ -4,7 +4,7 @@ import { ImageAnimate } from '@/components/ui/animate'
 import Count from '@/components/ui/count'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import Link from 'next/link'
-import { HouseCard } from '@/components/ui/houseCard'
+import { House, HouseCard } from '@/components/ui/houseCard'
 import Filter from '@/components/ui/filter'
 import EmblaCarousel from '@/components/ui/carousel'
 import AgentCard from '@/components/ui/agentCard'
@@ -16,6 +16,36 @@ import FilterSection from '@/components/ui/filterSection'
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
 }
+
+const houses: House[] = [
+        {
+                heightOfImg: 425,
+                price: 600000,
+                name: 'Grand Arcadia',
+                addressStreet: '2345 Birch Road',
+                addressCity: 'Berlin, 10115, Germany',
+                features: { beds: 3, bath: 2, area: 900 },
+                state: 'sale',
+        },
+        {
+                heightOfImg: 425,
+                price: 600000,
+                name: 'Grand Arcadia',
+                addressStreet: '2345 Birch Road',
+                addressCity: 'Berlin, 10115, Germany',
+                features: { beds: 3, bath: 2, area: 900 },
+                state: 'sale',
+        },
+        {
+                heightOfImg: 425,
+                price: 600000,
+                name: 'Grand Arcadia',
+                addressStreet: '2345 Birch Road',
+                addressCity: 'Berlin, 10115, Germany',
+                features: { beds: 3, bath: 2, area: 900 },
+                state: 'sale',
+        },
+]
 
 export default async function Home() {
         return (
@@ -111,11 +141,16 @@ export default async function Home() {
                                         <div>
                                                 <Filter />
                                                 <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center max-sm:hidden'>
-                                                        <HouseCard />
-                                                        <HouseCard />
-                                                        <HouseCard />
+                                                        {houses.map((h, key) => {
+                                                                return <HouseCard {...h} key={key} />
+                                                        })}
                                                 </div>
-                                                <EmblaCarousel slides={[<HouseCard key={12} />, <HouseCard key={13} />, <HouseCard key={13} />]} className='sm:hidden' />
+                                                <EmblaCarousel
+                                                        slides={houses.map((h, key) => {
+                                                                return <HouseCard {...h} key={key} />
+                                                        })}
+                                                        className='sm:hidden'
+                                                />
                                         </div>
                                 </div>
                         </section>

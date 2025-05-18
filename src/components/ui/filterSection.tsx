@@ -1,7 +1,33 @@
+'use client'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
+import { useState } from 'react'
+
+function SelectCreator({ types, callback, defaultValue }: { types: string[]; callback: (s: string) => void; defaultValue: string }) {
+        return (
+                <Select onValueChange={callback} defaultValue={defaultValue}>
+                        <SelectTrigger className='w-32 max-xs:w-full capitalize font-medium'>
+                                <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                                {types.map((t, key) => {
+                                        return (
+                                                <SelectItem value={t} className='capitalize font-medium' key={key}>
+                                                        {t}
+                                                </SelectItem>
+                                        )
+                                })}
+                        </SelectContent>
+                </Select>
+        )
+}
 
 export default function FilterSection() {
+        const [state, setState] = useState<string>('all type')
+        const [city, setCity] = useState<string>('all cities')
+        const [type, setType] = useState<string>('all type')
+        const [beds, setBeds] = useState<string>('all type')
+        const [price, setPrice] = useState<string>('$200,000')
         return (
                 <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5'>
                         <div className='container flex flex-col items-center gap-15'>
@@ -12,67 +38,23 @@ export default function FilterSection() {
                                 <form action='' className='flex gap-20 max-lg:gap-7 flex-wrap justify-center max-xs:flex-col items-center max-xs:text-center max-xs:w-full max-xs:px-4'>
                                         <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Looking for
-                                                <Select defaultValue='buy'>
-                                                        <SelectTrigger className='w-21 max-xs:w-full'>
-                                                                <SelectValue placeholder='Looking for' />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                                <SelectItem value='buy'>Buy</SelectItem>
-                                                                <SelectItem value='rent'>Rent</SelectItem>
-                                                        </SelectContent>
-                                                </Select>
+                                                <SelectCreator types={['all type', 'buy', 'sell']} callback={setState} defaultValue={state} />
                                         </label>
                                         <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Location
-                                                <Select defaultValue='london'>
-                                                        <SelectTrigger className='w-26 max-xs:w-full'>
-                                                                <SelectValue placeholder='Theme' />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                                <SelectItem value='london'>London</SelectItem>
-                                                                <SelectItem value='warsaw'>Warsaw</SelectItem>
-                                                                <SelectItem value='barcelona'>Barcelona</SelectItem>
-                                                        </SelectContent>
-                                                </Select>
+                                                <SelectCreator types={['all cities', 'barcelona', 'warsaw']} callback={setCity} defaultValue={city} />
                                         </label>
                                         <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Property Type
-                                                <Select defaultValue='family house'>
-                                                        <SelectTrigger className='w-39 max-xs:w-full'>
-                                                                <SelectValue placeholder='Theme' />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                                <SelectItem value='family house'>Family House</SelectItem>
-                                                                <SelectItem value='dark'>Mansion</SelectItem>
-                                                                <SelectItem value='rancho'>Rancho</SelectItem>
-                                                        </SelectContent>
-                                                </Select>
+                                                <SelectCreator types={['all type', 'family house', 'villa']} callback={setType} defaultValue={type} />
                                         </label>
                                         <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Bedrooms
-                                                <Select defaultValue='3 bedrooms'>
-                                                        <SelectTrigger className='w-37 max-xs:w-full'>
-                                                                <SelectValue placeholder='Bedrooms' />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                                <SelectItem value='bedroom'>A Bedroom</SelectItem>
-                                                                <SelectItem value='2 bedrooms'>2 Bedrooms</SelectItem>
-                                                                <SelectItem value='3 bedrooms'>3 Bedrooms</SelectItem>
-                                                        </SelectContent>
-                                                </Select>
+                                                <SelectCreator types={['all type', 'a bedroom', '2 bedroom', '3 bedroom']} callback={setBeds} defaultValue={beds} />
                                         </label>
                                         <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
                                                 Budget
-                                                <Select defaultValue='500,000'>
-                                                        <SelectTrigger className='w-33 max-xs:w-full'>
-                                                                <SelectValue placeholder='Budget' />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                                <SelectItem value='200,000'>$200,000</SelectItem>
-                                                                <SelectItem value='350,000'>$350,000</SelectItem>
-                                                                <SelectItem value='500,000'>$500,000</SelectItem>
-                                                        </SelectContent>
-                                                </Select>
+                                                <SelectCreator types={['$200,000', '$300,000', '$450,000']} callback={setPrice} defaultValue={price} />
                                         </label>
                                         <Button className='w-14 h-14 rounded-4xl text-base max-xs:w-full  max-xs:h-12'>
                                                 <span className='xs:hidden'>Search</span>

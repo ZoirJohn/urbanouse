@@ -60,6 +60,6 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
                         values: data,
                 }
         }
-        redirect('/about')
+        redirect('/')
         return { errors: {}, values: { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' } }
 }

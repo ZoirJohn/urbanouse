@@ -1,9 +1,7 @@
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
-import Filter from '@/components/ui/filter'
 import FilterSection from '@/components/ui/filterSection'
-import { HouseCard } from '@/components/ui/houseCard'
 
-export default function About() {
+export default function Properties() {
         return (
                 <>
                         <FilterSection />
@@ -16,10 +14,6 @@ export default function About() {
                                                         Properties
                                                 </h2>
                                                 <p className='description pr-20'>Discover premium listings selected for their prime locations, unmatched quality, and exceptional value.</p>
-                                        </div>
-                                        <Filter />
-                                        <div>
-                                                <HouseCard />
                                         </div>
                                 </div>
                         </section>

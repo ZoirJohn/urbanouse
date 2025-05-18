@@ -1,6 +1,6 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, use } from 'react'
 import { supabase } from '@/utils/client'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -27,14 +27,15 @@ export default function Header() {
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
         const [user, setUser] = useState<string | null>(null)
 
-        const fetchUser = useCallback(async () => {
+        const fetchUser = async () => {
                 try {
                         const user = await supabase.auth.getSession().then((res) => res.data.session?.user)
+                        console.log(user)
                         return user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
                 }
-        }, [])
+        }
 
         useEffect(() => {
                 const handleScroll = () => {
@@ -120,8 +121,9 @@ export default function Header() {
 
         return (
                 <header
-                        className={clsx('fixed left-0 w-full z-30 top-0 bg-[#fcfcfc]', {
-                                'bg-[#fcfcfc]': isScrolled,
+                        suppressHydrationWarning
+                        className={clsx('fixed left-0 w-full z-30 top-0 bg-white', {
+                                'bg-white': isScrolled,
                         })}
                 >
                         <div className='container flex justify-between items-center py-4 h-17'>
