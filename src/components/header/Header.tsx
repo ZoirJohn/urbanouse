@@ -1,6 +1,6 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect, useCallback, use } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { supabase } from '@/utils/client'
 import clsx from 'clsx'
 import Link from 'next/link'
@@ -27,7 +27,7 @@ export default function Header() {
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
         const [user, setUser] = useState<string | null>(null)
 
-        const fetchUser = async () => {
+        const fetchUser = useCallback(async () => {
                 try {
                         const user = await supabase.auth.getSession().then((res) => res.data.session?.user)
                         console.log(user)
@@ -35,7 +35,7 @@ export default function Header() {
                 } catch (error) {
                         return { error }
                 }
-        }
+        }, [])
 
         useEffect(() => {
                 const handleScroll = () => {
