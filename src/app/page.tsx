@@ -1,7 +1,6 @@
 import { ImageAnimate } from '@/components/ui/animate'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { HouseCard } from '@/components/ui/houseCard'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { randomUUID } from 'crypto'
 import { House } from '@/utils/definitions'
 import Image from 'next/image'
