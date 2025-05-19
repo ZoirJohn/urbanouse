@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import { EmblaOptionsType } from 'embla-carousel'
 import { DotButton, useDotButton } from './carouselDot'
 import useEmblaCarousel from 'embla-carousel-react'
-
+import Autoplay from 'embla-carousel-autoplay'
 type PropType = {
         slides: ReactNode[]
         options?: EmblaOptionsType
@@ -12,16 +12,16 @@ type PropType = {
 
 const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         const { slides, options } = props
-        const [emblaRef, emblaApi] = useEmblaCarousel(options)
+        const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay({ delay: 3000 })])
 
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-
+        console.log(slides)
         return (
                 <div className={'embla w-full height-76 ' + className}>
                         <div className='embla__viewport overflow-hidden' ref={emblaRef}>
                                 <div className='embla__container flex jusify-center gap-5 mx-auto w-full'>
                                         {slides.map((index, i) => (
-                                                <div className='embla__slide' key={i}>
+                                                <div className='embla__slide w-1/4 max-md:w-5/6 shrink-0' key={i}>
                                                         {index}
                                                 </div>
                                         ))}

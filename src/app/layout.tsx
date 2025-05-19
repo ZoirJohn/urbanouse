@@ -5,6 +5,7 @@ import './globals.css'
 import Header from '@/components/header/Header'
 import { ThemeProvider } from '@/components/themeProvider'
 import Footer from '@/components/footer/Footer'
+import { Faq } from '@/components/faq/Faq'
 
 const manrope = Plus_Jakarta_Sans({
         variable: '--manrope',
@@ -26,7 +27,10 @@ export default function RootLayout({
                         <body className={`${manrope.className} antialiased font-sans flex flex-col min-h-full`}>
                                 <ThemeProvider defaultTheme='light' attribute='class' enableSystem disableTransitionOnChange>
                                         <Header />
-                                        <main className='mt-17 max-md:mt-15 grow basis-auto'>{children}</main>
+                                        <main className='mt-17 max-md:mt-15 grow basis-auto'>
+                                                {children}
+                                                <Faq />
+                                        </main>
                                         <Footer />
                                 </ThemeProvider>
                                 <Analytics />
