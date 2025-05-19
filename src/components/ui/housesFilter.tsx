@@ -1,5 +1,6 @@
 import Filter from '@/components/ui/filter'
-import { House, HouseCard } from './houseCard'
+import { HouseCard } from './houseCard'
+import { House } from '@/utils/definitions'
 
 const houses: House[] = [
         {
