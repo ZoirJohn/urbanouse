@@ -18,7 +18,9 @@ function Box() {
 }
 
 export default async function Home() {
-        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses').then((res) => res.json())
+        const houses: House[] | undefined = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses')
+                .then((res) => res.json())
+                .catch((error) => undefined)
         return (
                 <>
                         <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-[#fcfcfc] overflow-hidden'>
@@ -112,14 +114,19 @@ export default async function Home() {
                                         <div>
                                                 <Filter />
                                                 <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center max-sm:hidden'>
-                                                        {houses.map((h, key) => {
-                                                                return <HouseCard {...h} key={key} />
-                                                        })}
+                                                        {houses?.length &&
+                                                                houses.map((h, key) => {
+                                                                        return <HouseCard {...h} key={key} />
+                                                                })}
                                                 </div>
                                                 <EmblaCarousel
-                                                        slides={houses.map((h, key) => {
-                                                                return <HouseCard {...h} key={key} />
-                                                        })}
+                                                        slides={
+                                                                houses?.length
+                                                                        ? houses.map((h, key) => {
+                                                                                  return <HouseCard {...h} key={key} />
+                                                                          })
+                                                                        : []
+                                                        }
                                                         className='sm:hidden'
                                                 />
                                         </div>
