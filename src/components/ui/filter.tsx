@@ -3,13 +3,13 @@ import { useState } from 'react'
 import { Button } from './button'
 
 export default function Filter() {
-        const [filter, setFilter] = useState('all')
+        const [filter, setFilter] = useState('all type')
         return (
                 <div className='flex gap-5 justify-center py-15 col-span-3 max-md:justify-start max-lg:col-span-2 max-xs:pt-5 max-md:col-span-1 overflow-auto'>
-                        <Button className='rounded-3xl text-base h-10' variant={filter == 'all type' ? 'default' : 'outline'} onClick={() => setFilter('all')}>
+                        <Button className='rounded-3xl text-base h-10' variant={filter == 'all type' ? 'default' : 'outline'} onClick={() => setFilter('all type')}>
                                 All Properties
                         </Button>
-                        <Button className='rounded-3xl text-base h-10' variant={filter == 'family house' ? 'default' : 'outline'} onClick={() => setFilter('family')}>
+                        <Button className='rounded-3xl text-base h-10' variant={filter == 'family house' ? 'default' : 'outline'} onClick={() => setFilter('family house')}>
                                 Family House
                         </Button>
                         <Button className='rounded-3xl text-base h-10' variant={filter == 'villa' ? 'default' : 'outline'} onClick={() => setFilter('villa')}>
