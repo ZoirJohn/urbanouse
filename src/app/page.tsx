@@ -1,7 +1,6 @@
 import { ImageAnimate } from '@/components/ui/animate'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { HouseCard } from '@/components/ui/houseCard'
-import { randomUUID } from 'crypto'
 import { House } from '@/utils/definitions'
 import Image from 'next/image'
 import banner from '../../public/img/banner.png'
@@ -10,8 +9,8 @@ import Link from 'next/link'
 import Filter from '@/components/ui/filter'
 import EmblaCarousel from '@/components/ui/carousel'
 import AgentCard from '@/components/ui/agentCard'
-import Feedback from '@/components/ui/feedback'
 import FilterSection from '@/components/ui/filterSection'
+import Opinion from '@/components/opinion/Opinion'
 
 function Box() {
         return <div className='rounded-xl bg-[url(/img/mansion.png)] bg-cover bg-center min-h-80 hover:opacity-95 transition max-xs:col-span-2'></div>
@@ -152,37 +151,7 @@ export default async function Home() {
                                         />
                                 </div>
                         </section>
-                        <section className='bg-[#f5f5f5] dark:bg-transparent'>
-                                <div className='container flex flex-col gap-20 max-sm:gap-5'>
-                                        <div className=''>
-                                                <DescriptionBtn text='Testimonial' />
-                                                <h2 className='font-semibold'>What People Are Saying</h2>
-                                                <p className='md:basis-125 description'>Real feedback from clients who&apos;ve experienced the Urbanouse difference.</p>
-                                        </div>
-
-                                        <Feedback
-                                                slides={[
-                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
-                                                                <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
-                                                                        “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step.
-                                                                        We couldn&apos;t be happier with our new home.”
-                                                                </h5>
-                                                                <p className=''>Sarah & Michael Stone</p>
-                                                                <p className='description text-base!'>Homeowners</p>
-                                                        </div>,
-                                                        <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
-                                                                <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
-                                                                        “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step.
-                                                                        We couldn&apos;t be happier with our new home.”
-                                                                </h5>
-                                                                <p className=''>Sarah & Michael Stone</p>
-                                                                <p className='description text-base!'>Homeowners</p>
-                                                        </div>,
-                                                ]}
-                                                className=''
-                                        />
-                                </div>
-                        </section>
+                        <Opinion />
                 </>
         )
 }
