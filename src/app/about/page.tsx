@@ -25,15 +25,15 @@ export default function About(): ReactNode {
                                         <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0' />
                                         <div>
                                                 <p className='description'>
-                                                        At Urbanouse, we believe finding a home is more than a transaction—it’s about creating a space where dreams grow. Founded by a team of dedicated
+                                                        At Urbanouse, we believe finding a home is more than a transaction—it&apos;s about creating a space where dreams grow. Founded by a team of dedicated
                                                         real estate professionals, we set out to make the home buying, selling, and renting process seamless and personal. With a focus on understanding
-                                                        each client's unique needs, we’ve helped countless individuals and families find homes that truly fit their lifestyle and aspirations.
+                                                        each client&apos;s unique needs, we&apos;ve helped countless individuals and families find homes that truly fit their lifestyle and aspirations.
                                                 </p>
                                                 <br />
                                                 <p className='description'>
                                                         Over the years, Urbanouse has grown into a trusted leader in the real estate industry. Our success is built on strong relationships and a
-                                                        commitment to transparency, integrity, and personalized service. Whether it’s guiding first-time buyers or working with seasoned investors,
-                                                        we’re proud to be the partner people trust to help them find not just a property, but a place to call home.
+                                                        commitment to transparency, integrity, and personalized service. Whether it&apos;s guiding first-time buyers or working with seasoned investors,
+                                                        we&apos;re proud to be the partner people trust to help them find not just a property, but a place to call home.
                                                 </p>
                                         </div>
                                 </div>
