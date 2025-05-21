@@ -1,6 +1,8 @@
+import AgentCard from '@/components/ui/agentCard'
 import { Button } from '@/components/ui/button'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { MoveDown } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Agents() {
@@ -97,8 +99,23 @@ export default function Agents() {
                                                         </svg>
                                                 </Button>
                                         </form>
+                                        <div className=''>
+                                                <div className='py-20 grid grid-cols-4 gap-y-4 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                        <AgentCard />
+                                                </div>
+                                                <Button className='rounded-full h-12 w-36 mx-auto flex'>
+                                                        View More <MoveDown />
+                                                </Button>
+                                        </div>
                                 </div>
                         </section>
+                        <section></section>
                 </>
         )
 }
