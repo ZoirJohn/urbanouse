@@ -34,7 +34,7 @@ export default function Agents() {
                                                 <br />
                                                 <p className='description'>
                                                         With years of experience in the real estate industry, they’re equipped to guide you through every step of the buying, selling, or renting
-                                                        process. Whether you're a first-time homebuyer or a seasoned investor, our agents offer personalized service tailored to your unique needs and
+                                                        process. Whether you&apos;re a first-time homebuyer or a seasoned investor, our agents offer personalized service tailored to your unique needs and
                                                         preferences.
                                                 </p>
                                         </div>

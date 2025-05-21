@@ -29,7 +29,7 @@ export default function Header() {
 
         const fetchUser = useCallback(async () => {
                 try {
-                        const user = await supabase.auth.getSession()
+                        const user = (await supabase.auth.getSession()).data.session?.user.user_metadata.fullName
                         return user
                 } catch (error) {
                         return { error }
@@ -41,13 +41,15 @@ export default function Header() {
                         setIsScrolled(window.scrollY > 30)
                 }
                 window.addEventListener('scroll', handleScroll)
-
+                fetchUser()
+                        .then(setUser)
+                        .catch(() => console.error('SOME ERROR HAS OCCURED'))
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
         }, [fetchUser])
         useEffect(() => {
-                const { data } = supabase.auth.onAuthStateChange((event, session) => {
+                const {} = supabase.auth.onAuthStateChange((_, session) => {
                         console.log(session)
                 })
         }, [])
