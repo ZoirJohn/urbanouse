@@ -6,7 +6,7 @@ import { useState } from 'react'
 function SelectCreator({ types, callback, defaultValue }: { types: string[]; callback: (s: string) => void; defaultValue: string }) {
         return (
                 <Select onValueChange={callback} defaultValue={defaultValue}>
-                        <SelectTrigger className='w-32 max-xs:w-full capitalize font-medium'>
+                        <SelectTrigger className='w-32 max-xs:w-full capitalize font-medium dark:text-white'>
                                 <SelectValue />
                         </SelectTrigger>
                         <SelectContent>

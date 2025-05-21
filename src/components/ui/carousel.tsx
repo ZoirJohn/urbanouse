@@ -15,7 +15,6 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         const [emblaRef, emblaApi] = useEmblaCarousel(options, [Autoplay({ delay: 3000 })])
 
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-        console.log(slides)
         return (
                 <div className={'embla w-full height-76 ' + className}>
                         <div className='embla__viewport overflow-hidden' ref={emblaRef}>

@@ -29,8 +29,8 @@ export default function Header() {
 
         const fetchUser = useCallback(async () => {
                 try {
-                        const user = await supabase.auth.getSession().then((res) => res.data.session?.user)
-                        return user?.user_metadata.fullName
+                        const user = await supabase.auth.getSession()
+                        return user
                 } catch (error) {
                         return { error }
                 }
@@ -40,14 +40,17 @@ export default function Header() {
                 const handleScroll = () => {
                         setIsScrolled(window.scrollY > 30)
                 }
-
                 window.addEventListener('scroll', handleScroll)
-                fetchUser().then(setUser)
+
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
         }, [fetchUser])
-
+        useEffect(() => {
+                const { data } = supabase.auth.onAuthStateChange((event, session) => {
+                        console.log(session)
+                })
+        }, [])
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList className='flex gap-6 text-sm font-medium text-gray-600'>
