@@ -16,7 +16,7 @@ export default function About(): ReactNode {
                                                 <p className='md:basis-125 description pr-5'>Connecting you with premium properties and unparalleled real estate services.</p>
                                         </div>
                                         <div>
-                                                <Image src='/img/bgimage.png' width={680} height={550} alt='image'></Image>
+                                                <Image src='/img/bgimage.png' width={680} height={550} alt='image' />
                                         </div>
                                 </div>
                         </section>
@@ -25,9 +25,10 @@ export default function About(): ReactNode {
                                         <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0' />
                                         <div>
                                                 <p className='description'>
-                                                        At Urbanouse, we believe finding a home is more than a transaction—it&apos;s about creating a space where dreams grow. Founded by a team of dedicated
-                                                        real estate professionals, we set out to make the home buying, selling, and renting process seamless and personal. With a focus on understanding
-                                                        each client&apos;s unique needs, we&apos;ve helped countless individuals and families find homes that truly fit their lifestyle and aspirations.
+                                                        At Urbanouse, we believe finding a home is more than a transaction—it&apos;s about creating a space where dreams grow. Founded by a team of
+                                                        dedicated real estate professionals, we set out to make the home buying, selling, and renting process seamless and personal. With a focus on
+                                                        understanding each client&apos;s unique needs, we&apos;ve helped countless individuals and families find homes that truly fit their lifestyle
+                                                        and aspirations.
                                                 </p>
                                                 <br />
                                                 <p className='description'>
@@ -137,7 +138,7 @@ export default function About(): ReactNode {
                                         <div className='mb-15 max-md:mb-5 flex flex-col items-end'>
                                                 <DescriptionBtn text='Meet Our Agents' />
                                                 <h2 className='font-semibold mt-3 mb-5'>Our Agents of Experts</h2>
-                                                <p className='md:w-125 description pr-5'>Dedicated professionals passionate about making your real estate dreams come true.</p>
+                                                <p className='description pr-5'>Dedicated professionals passionate about making your real estate dreams come true.</p>
                                         </div>
                                         <div className='grid grid-cols-4 gap-y-10 gap-x-5 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
                                                 <AgentCard />
