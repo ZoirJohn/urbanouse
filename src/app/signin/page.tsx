@@ -9,28 +9,23 @@ import { useActionState } from 'react'
 import Link from 'next/link'
 import { SingInState } from '@/utils/definitions'
 import { useFormStatus } from 'react-dom'
-import clsx from 'clsx'
 import { LoaderCircle } from 'lucide-react'
+import Image from 'next/image'
 
 function FormControls({ state }: { state: SingInState }) {
         const { pending } = useFormStatus()
         return (
                 <>
-                        {pending && <LoaderCircle className='animate-spin' />}
+                        {pending && (
+                                <div className='bg-white/90 absolute top-1/2 left-1/2 -translate-1/2 w-full h-full flex items-center justify-center'>
+                                        <LoaderCircle className='animate-spin w-1/2 h-1/2' />
+                                </div>
+                        )}
                         <div className='grid gap-3'>
                                 <Label htmlFor='email' className='text-base'>
                                         Username or Email
                                 </Label>
-                                <Input
-                                        id='email'
-                                        name='email'
-                                        type='email'
-                                        placeholder='you@example.com'
-                                        autoComplete='username'
-                                        className='rounded-4xl p-4 h-14'
-                                        disabled={pending}
-                                        defaultValue={state.values.email}
-                                />
+                                <Input id='email' name='email' type='email' placeholder='you@example.com' autoComplete='username' className='rounded-4xl p-4 h-14' defaultValue={state.values.email} />
                                 {state.errors.email &&
                                         state.errors.email.map((error, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
@@ -48,8 +43,7 @@ function FormControls({ state }: { state: SingInState }) {
                                         type='password'
                                         placeholder='••••••••'
                                         autoComplete='new-password'
-                                        className={clsx({ 'animate-pulse': pending }, 'rounded-4xl p-4 h-14')}
-                                        disabled={pending}
+                                        className='rounded-4xl p-4 h-14'
                                         defaultValue={state.values.password}
                                 />
                                 {state.errors.password &&
@@ -62,7 +56,7 @@ function FormControls({ state }: { state: SingInState }) {
                         <Link href='/forgot' className='justify-self-end hover:underline underline-offset-4'>
                                 Forgot your password?
                         </Link>
-                        <Button type='submit' className='w-full h-12 rounded-4xl' disabled={pending}>
+                        <Button type='submit' className='w-full h-12 rounded-4xl'>
                                 Log In
                         </Button>
                 </>
@@ -74,19 +68,21 @@ export default function LoginForm() {
         return (
                 <section>
                         <div className='container'>
-                                <Card className='border max-w-141.5 w-full p-10 max-lg:p-5'>
+                                <Card className='border max-w-141.5 w-full p-10 max-lg:p-5 relative'>
                                         <CardHeader>
                                                 <CardTitle className='text-3xl font-semibold'>Welcome Back!</CardTitle>
                                                 <CardDescription className='text-lg'>Log in to manage your property searches, save favorites, and get personalized recommendations.</CardDescription>
                                         </CardHeader>
-                                        <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center'>
+                                        <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center max-sm:grid-cols-1 max-sm:gap-y-4'>
                                                 <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                        <Image src='/img/google.png' alt='' width={24} height={24} />
                                                         Log In with Google
                                                 </Button>
-                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58 text-base'>
+                                                        <Image src='/img/apple.png' alt='' width={24} height={24} />
                                                         Log In with Apple
                                                 </Button>
-                                                <p className='text-base! text-gentle col-span-2'>or continue with email</p>
+                                                <p className='text-base! text-gentle col-span-2 max-sm:col-span-1'>or continue with email</p>
                                         </div>
                                         <CardContent>
                                                 <form className='grid gap-5' action={action}>

@@ -2,14 +2,15 @@ import Image from 'next/image'
 import { Button } from './button'
 import { Card, CardContent, CardHeader, CardFooter, CardTitle, CardDescription } from './card'
 import Link from 'next/link'
+import { Agent } from '@/utils/definitions'
 
-export default function AgentCard() {
+export default function AgentCard({ fullName, achievements, location, position, rating }: Agent) {
         return (
                 <Card className='w-79 gap-0 dark:bg-transparent mx-auto max-xs:w-75'>
                         <CardHeader>
                                 <Image src='/img/image.png' width={315} height={300} alt='image' className='rounded-xl' />
-                                <CardTitle className='text-[1.25rem]'>Jaydon George</CardTitle>
-                                <CardDescription className='description font-normal mb-3'>Senior Real Estate Advisor</CardDescription>
+                                <CardTitle className='text-[1.25rem]'>{fullName}</CardTitle>
+                                <CardDescription className='description font-normal mb-3'>{position}</CardDescription>
                         </CardHeader>
                         <CardContent className='flex flex-col gap-3'>
                                 <CardDescription className='description text-sm! font-normal flex gap-1'>
@@ -22,7 +23,7 @@ export default function AgentCard() {
                                                         strokeLinejoin='round'
                                                 />
                                         </svg>
-                                        Paris
+                                        {location}
                                 </CardDescription>
                                 <CardDescription className='description text-sm! font-normal flex gap-1'>
                                         <svg width='14' height='18' viewBox='0 0 14 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -41,7 +42,7 @@ export default function AgentCard() {
                                                         strokeLinejoin='round'
                                                 />
                                         </svg>
-                                        432 properties sold
+                                        {achievements.sold && achievements.sold + ' properties sold'} {achievements.rented && '|' + achievements.rented + 'properties rented'}
                                 </CardDescription>
                         </CardContent>
                         <CardFooter className='mt-5 p-0'>

@@ -1,11 +1,25 @@
+'use client'
 import AgentCard from '@/components/ui/agentCard'
 import { Button } from '@/components/ui/button'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MoveDown } from 'lucide-react'
+import { Agent } from '@/utils/definitions'
+import { LoaderCircle, MoveDown } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { Suspense, useEffect, useState } from 'react'
 
 export default function Agents() {
+        const [agents, setAgents] = useState<Agent[]>([])
+        const [numberOfUsers, setNumberOfUsers] = useState<number>(1)
+        const fetchAgents = async () => {
+                const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents').then((res) => res.json())
+                return res
+        }
+        useEffect(() => {
+                fetchAgents().then(setAgents)
+        }, [])
+        console.log(numberOfUsers)
         return (
                 <>
                         <section>
@@ -14,7 +28,9 @@ export default function Agents() {
                                                 <DescriptionBtn text='Agents' />
                                                 <h2 className='font-semibold'>Meet Our Expert Agents</h2>
                                                 <p className='md:basis-125 description pr-5'>Your dedicated guides in the journey to your dream property.</p>
-                                                <Button className='rounded-full h-12 w-40 text-base mt-10 max-md:mt-5'>View Our Agents</Button>
+                                                <Link href='#scroll'>
+                                                        <Button className='rounded-full h-12 w-40 text-base mt-10 max-md:mt-5'>View Our Agents</Button>
+                                                </Link>
                                         </div>
                                         <div>
                                                 <Image src='/img/bgimage.png' width={680} height={550} alt='image' />
@@ -34,8 +50,8 @@ export default function Agents() {
                                                 <br />
                                                 <p className='description'>
                                                         With years of experience in the real estate industry, they’re equipped to guide you through every step of the buying, selling, or renting
-                                                        process. Whether you&apos;re a first-time homebuyer or a seasoned investor, our agents offer personalized service tailored to your unique needs and
-                                                        preferences.
+                                                        process. Whether you&apos;re a first-time homebuyer or a seasoned investor, our agents offer personalized service tailored to your unique needs
+                                                        and preferences.
                                                 </p>
                                         </div>
                                 </div>
@@ -100,16 +116,25 @@ export default function Agents() {
                                                 </Button>
                                         </form>
                                         <div className=''>
-                                                <div className='py-20 grid grid-cols-4 gap-y-4 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
-                                                        <AgentCard />
-                                                        <AgentCard />
-                                                        <AgentCard />
-                                                        <AgentCard />
-                                                        <AgentCard />
-                                                        <AgentCard />
-                                                        <AgentCard />
+                                                <div className='py-20 grid grid-cols-4 gap-y-4 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1' id='scroll'>
+                                                        {agents.slice(0, 8 * numberOfUsers).map((_, key) => {
+                                                                return (
+                                                                        <AgentCard
+                                                                                key={key}
+                                                                                fullName={_.fullName}
+                                                                                achievements={_.achievements}
+                                                                                location={_.location}
+                                                                                position={_.position}
+                                                                                rating={_.rating}
+                                                                        />
+                                                                )
+                                                        })}
                                                 </div>
-                                                <Button className='rounded-full h-12 w-36 mx-auto flex'>
+                                                <Button
+                                                        className='rounded-full h-12 w-36 mx-auto flex'
+                                                        onClick={() => setNumberOfUsers((prevState) => prevState + 1)}
+                                                        disabled={Math.ceil(agents.length / 8) == numberOfUsers}
+                                                >
                                                         View More <MoveDown />
                                                 </Button>
                                         </div>

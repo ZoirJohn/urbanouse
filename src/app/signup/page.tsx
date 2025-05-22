@@ -24,7 +24,7 @@ function FormControls({ state }: { state: SingUpState }) {
                                         placeholder='First Name'
                                         type='text'
                                         aria-describedby='name-input'
-                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base max-xs:col-span-2'
                                         defaultValue={state.values.firstName}
                                         disabled={pending}
                                 />
@@ -35,7 +35,7 @@ function FormControls({ state }: { state: SingUpState }) {
                                         autoComplete='family-name'
                                         type='text'
                                         aria-describedby='surname-input'
-                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base'
+                                        className='rounded-4xl h-14 px-5 placeholder:text-placeholder placeholder:text-base max-xs:col-span-2'
                                         defaultValue={state.values.lastName}
                                         disabled={pending}
                                 />
@@ -141,14 +141,16 @@ export default function LoginForm() {
                                                         Create an account to start saving properties, receiving alerts, and accessing expert real estate insights.
                                                 </CardDescription>
                                         </CardHeader>
-                                        <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center'>
+                                        <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center max-sm:grid-cols-1 max-sm:gap-y-4'>
                                                 <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                        <Image src='/img/google.png' alt='' width={24} height={24} />
                                                         Log In with Google
                                                 </Button>
-                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58 text-base'>
+                                                        <Image src='/img/apple.png' alt='' width={24} height={24} />
                                                         Log In with Apple
                                                 </Button>
-                                                <p className='text-base! text-gentle col-span-2'>or continue with email</p>
+                                                <p className='text-base! text-gentle col-span-2 max-sm:col-span-1'>or continue with email</p>
                                         </div>
                                         <CardContent>
                                                 <form action={action} className='flex flex-col gap-5'>
