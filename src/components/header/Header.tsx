@@ -22,6 +22,7 @@ const navLinks = [
 ]
 
 export default function Header() {
+        
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -48,11 +49,6 @@ export default function Header() {
                         window.removeEventListener('scroll', handleScroll)
                 }
         }, [fetchUser])
-        useEffect(() => {
-                const {} = supabase.auth.onAuthStateChange((_, session) => {
-                        console.log(session)
-                })
-        }, [])
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList className='flex gap-6 text-sm font-medium text-gray-600'>
