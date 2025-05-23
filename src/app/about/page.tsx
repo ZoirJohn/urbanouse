@@ -1,5 +1,4 @@
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
-import { ReactNode } from 'react'
 import { Crown, Handshake, Leaf, Lightbulb, ShieldCheck, UserRound } from 'lucide-react'
 import Opinion from '@/components/opinion/Opinion'
 import Image from 'next/image'
