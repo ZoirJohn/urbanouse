@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardFooter, CardTitle, CardDescription }
 import Link from 'next/link'
 import { Agent } from '@/utils/definitions'
 
-export default function AgentCard({ fullName, achievements, location, position, rating }: Agent) {
+export default function AgentCard({ fullName, achievements, location, position }: Agent) {
         return (
                 <Card className='w-79 gap-0 dark:bg-transparent mx-auto max-xs:w-75'>
                         <CardHeader>

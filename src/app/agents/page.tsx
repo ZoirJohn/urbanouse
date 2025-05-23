@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Agent } from '@/utils/definitions'
-import { LoaderCircle, MoveDown } from 'lucide-react'
+import { MoveDown } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function Agents() {
         const [agents, setAgents] = useState<Agent[]>([])

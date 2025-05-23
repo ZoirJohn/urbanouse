@@ -109,6 +109,6 @@ const agents: Agent[] = [
         },
 ]
 
-export async function GET(response: NextResponse): Promise<NextResponse<Agent[]>> {
+export async function GET(): Promise<NextResponse<Agent[]>> {
         return NextResponse.json(agents)
 }
