@@ -17,8 +17,16 @@ function Box() {
 }
 
 export default async function Home() {
-        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses').then((res) => res.json())
-        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents').then((res) => res.json())
+        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses')
+                .then((res) => res.json())
+                .catch((error) => {
+                        throw new Error(error.message)
+                })
+        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents')
+                .then((res) => res.json())
+                .catch((error) => {
+                        throw new Error(error.message)
+                })
         return (
                 <>
                         <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-[#fcfcfc] overflow-hidden'>
