@@ -7,11 +7,7 @@ import { House } from '@/utils/definitions'
 import { ReactNode } from 'react'
 
 export default async function Properties(): Promise<ReactNode> {
-        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/houses', { cache: 'no-store' })
-                .then((res) => res.json())
-                .catch((error) => {
-                        throw new Error(error.message)
-                })
+        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/houses', { cache: 'no-store' }).then((res) => res.json())
         return (
                 <>
                         <FilterSection />

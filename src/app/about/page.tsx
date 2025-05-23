@@ -6,11 +6,7 @@ import AgentCard from '@/components/ui/agentCard'
 import { Agent } from '@/utils/definitions'
 
 export default async function About() {
-        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents')
-                .then((res) => res.json())
-                .catch((error) => {
-                        throw new Error(error.message)
-                })
+        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'no-store' }).then((res) => res.json())
         return (
                 <>
                         <section>
