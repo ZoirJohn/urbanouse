@@ -4,8 +4,10 @@ import { Crown, Handshake, Leaf, Lightbulb, ShieldCheck, UserRound } from 'lucid
 import Opinion from '@/components/opinion/Opinion'
 import Image from 'next/image'
 import AgentCard from '@/components/ui/agentCard'
+import { Agent } from '@/utils/definitions'
 
-export default function About(): ReactNode {
+export default async function About(): Promise<ReactNode> {
+        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_API_URL + '/api/agents').then((res) => res.json())
         return (
                 <>
                         <section>
@@ -141,20 +143,9 @@ export default function About(): ReactNode {
                                                 <p className='description pr-5'>Dedicated professionals passionate about making your real estate dreams come true.</p>
                                         </div>
                                         <div className='grid grid-cols-4 gap-y-10 gap-x-5 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
-                                                <AgentCard />
+                                                {agents.map((_, key) => (
+                                                        <AgentCard key={key} {..._} />
+                                                ))}
                                         </div>
                                 </div>
                         </section>
