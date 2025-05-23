@@ -1,7 +1,7 @@
 import { ImageAnimate } from '@/components/ui/animate'
 import { DescriptionBtn } from '@/components/ui/descriptionBtn'
 import { HouseCard } from '@/components/ui/houseCard'
-import { House } from '@/utils/definitions'
+import { Agent, House } from '@/utils/definitions'
 import Image from 'next/image'
 import banner from '../../public/img/banner.png'
 import Count from '@/components/ui/count'
@@ -17,9 +17,10 @@ function Box() {
 }
 
 export default async function Home() {
-        const houses: House[] | undefined = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses')
+        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses')
                 .then((res) => res.json())
                 .catch(() => undefined)
+        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents').then((res) => res.json())
         return (
                 <>
                         <section className='min-h-256 relative mx-auto max-container:min-h-200 max-lg:min-h-140 max-md:min-h-120 max-sm:min-h-90 max-xs:min-h-65 bg-[#fcfcfc] overflow-hidden'>
@@ -139,14 +140,9 @@ export default async function Home() {
                                                 <p className='md:basis-125 description'>A dedicated section highlighting an agent who’s gone above and beyond</p>
                                         </div>
                                         <EmblaCarousel
-                                                slides={[
-                                                        <AgentCard key={12} />,
-                                                        <AgentCard key={12} />,
-                                                        <AgentCard key={12} />,
-                                                        <AgentCard key={12} />,
-                                                        <AgentCard key={12} />,
-                                                        <AgentCard key={12} />,
-                                                ]}
+                                                slides={agents.map((_, key) => {
+                                                        return <AgentCard key={key} {..._} />
+                                                })}
                                                 className=''
                                         />
                                 </div>

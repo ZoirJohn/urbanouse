@@ -19,7 +19,6 @@ export default function Agents() {
         useEffect(() => {
                 fetchAgents().then(setAgents)
         }, [])
-        console.log(numberOfUsers)
         return (
                 <>
                         <section>
@@ -118,16 +117,7 @@ export default function Agents() {
                                         <div className=''>
                                                 <div className='py-20 grid grid-cols-4 gap-y-4 max-container:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1' id='scroll'>
                                                         {agents.slice(0, 8 * numberOfUsers).map((_, key) => {
-                                                                return (
-                                                                        <AgentCard
-                                                                                key={key}
-                                                                                fullName={_.fullName}
-                                                                                achievements={_.achievements}
-                                                                                location={_.location}
-                                                                                position={_.position}
-                                                                                rating={_.rating}
-                                                                        />
-                                                                )
+                                                                return <AgentCard key={key} {..._} />
                                                         })}
                                                 </div>
                                                 <Button
