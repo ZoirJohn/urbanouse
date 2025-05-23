@@ -6,7 +6,7 @@ import Image from 'next/image'
 import AgentCard from '@/components/ui/agentCard'
 import { Agent } from '@/utils/definitions'
 
-export default async function About(): Promise<ReactNode> {
+export default async function About() {
         const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents').then((res) => res.json())
         return (
                 <>

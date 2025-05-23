@@ -17,9 +17,7 @@ function Box() {
 }
 
 export default async function Home() {
-        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses')
-                .then((res) => res.json())
-                .catch(() => undefined)
+        const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/houses').then((res) => res.json())
         const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL + '/api/agents').then((res) => res.json())
         return (
                 <>
