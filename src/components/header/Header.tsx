@@ -1,14 +1,13 @@
 'use client'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect, useCallback } from 'react'
-import { createClient } from '@/utils/supabase/client'
-import clsx from 'clsx'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import clsx from 'clsx'
+import Link from 'next/link'
+import Image from 'next/image'
 import logo from '../../../public/img/logo.svg'
 import minLogo from '../../../public/img/logoMin.svg'
 
@@ -21,33 +20,19 @@ const navLinks = [
         { href: '/contact', label: 'Contact Us' },
 ]
 
-export default function Header() {
+export default function Header({ user }: { user: string }) {
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-        const [user, setUser] = useState<string | null>(null)
-        const fetchUser = useCallback(async () => {
-                const supabase = await createClient()
-                try {
-                        const user = await supabase.auth.getUser()
-                        return user.data.user?.user_metadata.fullName
-                } catch (error) {
-                        return { error }
-                }
-        }, [])
-        console.log(user);
         useEffect(() => {
                 const handleScroll = () => {
                         setIsScrolled(window.scrollY > 30)
                 }
                 window.addEventListener('scroll', handleScroll)
-                fetchUser()
-                        .then(setUser)
-                        .catch(() => console.error('SOME ERROR HAS OCCURED'))
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
-        }, [fetchUser])
+        }, [])
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>
                         <NavigationMenuList className='flex gap-6 text-sm font-medium text-gray-600'>

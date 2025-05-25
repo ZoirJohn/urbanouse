@@ -1,5 +1,4 @@
 'use client'
-
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -10,7 +9,6 @@ import { useFormStatus } from 'react-dom'
 import { SingUpState } from '@/utils/definitions'
 import Link from 'next/link'
 import Image from 'next/image'
-import image from '../../../public/img/image.png'
 
 function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()
@@ -165,7 +163,7 @@ export default function LoginForm() {
                                         </CardContent>
                                 </Card>
                                 <div className='max-w-694 max-container:p-0'>
-                                        <Image src={image} alt='image' width={694} height={845} />
+                                        <Image src='/img/image.png' alt='image' width={694} height={845} />
                                 </div>
                         </div>
                 </section>
