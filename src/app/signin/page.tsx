@@ -1,15 +1,14 @@
 'use client'
-
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
-import { signin } from '@/actions/loginAction'
+import { signin } from '@/actions/auth'
 import { useActionState } from 'react'
-import Link from 'next/link'
 import { SingInState } from '@/utils/definitions'
 import { useFormStatus } from 'react-dom'
 import { LoaderCircle } from 'lucide-react'
+import Link from 'next/link'
 import Image from 'next/image'
 
 function FormControls({ state }: { state: SingInState }) {

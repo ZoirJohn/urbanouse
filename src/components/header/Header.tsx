@@ -1,7 +1,7 @@
 'use client'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
-import { supabase } from '@/utils/client'
+import { createClient } from '@/utils/supabase/client'
 import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -22,21 +22,20 @@ const navLinks = [
 ]
 
 export default function Header() {
-        
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
         const [user, setUser] = useState<string | null>(null)
-
         const fetchUser = useCallback(async () => {
+                const supabase = await createClient()
                 try {
-                        const user = (await supabase.auth.getSession()).data.session?.user.user_metadata.fullName
-                        return user
+                        const user = await supabase.auth.getUser()
+                        return user.data.user?.user_metadata.fullName
                 } catch (error) {
                         return { error }
                 }
         }, [])
-
+        console.log(user);
         useEffect(() => {
                 const handleScroll = () => {
                         setIsScrolled(window.scrollY > 30)

@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { SingUpState } from '@/utils/definitions'
-import { supabase } from '@/utils/client'
+import { SingInState, SingUpState } from '@/utils/definitions'
+import { createClient } from '@/utils/supabase/client'
 import { redirect } from 'next/navigation'
 
 const signupSchema = z.object({
@@ -16,7 +16,6 @@ const signupSchema = z.object({
                 .regex(/[^a-zA-Z0-9]/, { message: 'Contain at least one special character' }),
         confirmPassword: z.string(),
 })
-
 export async function signup(state: SingUpState, formData: FormData): Promise<SingUpState> {
         const data = {
                 email: formData.get('email') as string,
@@ -42,6 +41,8 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
                         values: data,
                 }
         }
+        const supabase = await createClient()
+
         const { error } = await supabase.auth.signUp({
                 email: validated.data.email,
                 password: validated.data.password,
@@ -61,5 +62,44 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
                 }
         }
         redirect('/')
-        return { errors: {}, values: { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' } }
+}
+
+const SigninFormSchema = z.object({
+        email: z.string().email({ message: 'Please enter a valid email' }).trim(),
+        password: z
+                .string()
+                .min(8, { message: 'Be at least 8 characters long' })
+                .regex(/[a-zA-Z]/, { message: 'Contain at least one letter' })
+                .regex(/[0-9]/, { message: 'Contain at least one number' })
+                .regex(/[^a-zA-Z0-9]/, {
+                        message: 'Contain at least one special character',
+                })
+                .trim(),
+})
+export async function signin(state: SingInState, formData: FormData): Promise<SingInState> {
+        const data = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+        }
+        const validated = SigninFormSchema.safeParse(data)
+
+        if (!validated.success) {
+                return { errors: validated.error.flatten().fieldErrors, values: {} }
+        }
+        const supabase = await createClient()
+        const { error } = await supabase.auth.signInWithPassword({
+                email: validated.data.email,
+                password: validated.data.password,
+        })
+
+        if (error) {
+                return {
+                        errors: {
+                                password: [error.message],
+                        },
+                        values: {},
+                }
+        }
+        redirect('/')
+        return { errors: {}, values: {} }
 }
