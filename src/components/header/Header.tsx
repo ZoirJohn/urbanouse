@@ -38,7 +38,7 @@ export default function Header() {
         useEffect(() => {
                 async function fetchUsers() {
                         const supabase = await createClient()
-                        const { data, error } = await supabase.auth.getUser()
+                        const { data } = await supabase.auth.getUser()
                         return data.user?.user_metadata.fullName
                 }
                 fetchUsers().then(setUser)
