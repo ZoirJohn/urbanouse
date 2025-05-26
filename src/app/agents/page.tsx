@@ -42,7 +42,7 @@ export default function Agents() {
                         </section>
                         <section>
                                 <div className='container flex gap-15 items-center justify-center max-sm:flex-col max-md:gap-x-10 max-md:gap-y-2'>
-                                        <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0' />
+                                        <Image src='/img/floralhouse.jpeg' width={620} height={447} alt='image' className='lg:shrink-0' />
                                         <div>
                                                 <DescriptionBtn text='Why Choose Us' />
                                                 <h4 className='font-semibold mb-5'>Experience, Dedication, and Market Expertise You Can Trust.</h4>
@@ -70,7 +70,7 @@ export default function Agents() {
                                                 <label className='flex flex-col gap-2'>
                                                         <p className='description text-base!'>Location</p>
                                                         <Select defaultValue='all cities'>
-                                                                <SelectTrigger className='w-50'>
+                                                                <SelectTrigger className='w-50 dark:text-white'>
                                                                         <SelectValue />
                                                                 </SelectTrigger>
                                                                 <SelectContent>
@@ -83,7 +83,7 @@ export default function Agents() {
                                                 <label className='flex flex-col gap-2'>
                                                         <p className='description text-base!'>Property Type</p>
                                                         <Select defaultValue='all type'>
-                                                                <SelectTrigger className='w-50'>
+                                                                <SelectTrigger className='w-50 dark:text-white'>
                                                                         <SelectValue />
                                                                 </SelectTrigger>
                                                                 <SelectContent>
@@ -96,7 +96,7 @@ export default function Agents() {
                                                 <label className='flex flex-col gap-2'>
                                                         <p className='description text-base!'>Agents Type</p>
                                                         <Select defaultValue='all type'>
-                                                                <SelectTrigger className='w-50'>
+                                                                <SelectTrigger className='w-50 dark:text-white'>
                                                                         <SelectValue />
                                                                 </SelectTrigger>
                                                                 <SelectContent>

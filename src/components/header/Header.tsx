@@ -10,6 +10,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../../../public/img/logo.svg'
 import minLogo from '../../../public/img/logoMin.svg'
+import { createClient } from '@/utils/supabase/client'
 
 const navLinks = [
         { href: '/', label: 'Home' },
@@ -20,10 +21,11 @@ const navLinks = [
         { href: '/contact', label: 'Contact Us' },
 ]
 
-export default function Header({ user }: { user: string }) {
+export default function Header() {
         const pathname = usePathname()
         const [isScrolled, setIsScrolled] = useState(false)
         const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+        const [user, setUser] = useState()
         useEffect(() => {
                 const handleScroll = () => {
                         setIsScrolled(window.scrollY > 30)
@@ -32,6 +34,14 @@ export default function Header({ user }: { user: string }) {
                 return () => {
                         window.removeEventListener('scroll', handleScroll)
                 }
+        }, [])
+        useEffect(() => {
+                async function fetchUsers() {
+                        const supabase = await createClient()
+                        const { data, error } = await supabase.auth.getUser()
+                        return data.user?.user_metadata.fullName
+                }
+                fetchUsers().then(setUser)
         }, [])
         const renderDesktopNav = () => (
                 <NavigationMenu className='hidden md:flex'>

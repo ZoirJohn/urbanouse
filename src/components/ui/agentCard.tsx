@@ -8,7 +8,7 @@ export default function AgentCard({ fullName, achievements, location, position }
         return (
                 <Card className='w-79 gap-0 dark:bg-transparent mx-auto max-xs:w-75'>
                         <CardHeader>
-                                <Image src='/img/image.png' width={315} height={300} alt='image' className='rounded-xl' />
+                                <Image src={`/img/agent${Math.round(Math.random() * 2 + 1)}.jpeg`} width={315} height={300} alt='agent' className='rounded-xl h-75 object-cover' loading='lazy' />
                                 <CardTitle className='text-[1.25rem]'>{fullName}</CardTitle>
                                 <CardDescription className='description font-normal mb-3'>{position}</CardDescription>
                         </CardHeader>
@@ -42,7 +42,7 @@ export default function AgentCard({ fullName, achievements, location, position }
                                                         strokeLinejoin='round'
                                                 />
                                         </svg>
-                                        {achievements.sold && achievements.sold + ' properties sold'} {achievements.rented && '|' + achievements.rented + 'properties rented'}
+                                        {achievements.sold && achievements.sold + ' properties sold'} {achievements.rented && ' | ' + achievements.rented + ' properties rented'}
                                 </CardDescription>
                         </CardContent>
                         <CardFooter className='mt-5 p-0'>

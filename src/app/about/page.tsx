@@ -50,7 +50,7 @@ export default async function About() {
                                                         fulfilling experience at every step.
                                                 </p>
                                         </div>
-                                        <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0'></Image>
+                                        <Image src='/img/hitech2.jpeg' width={620} height={447} alt='image' className='lg:shrink-0'></Image>
                                 </div>
                         </section>
                         <section>

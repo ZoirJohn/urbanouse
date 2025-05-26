@@ -6,7 +6,6 @@ import Header from '@/components/header/Header'
 import { ThemeProvider } from '@/components/themeProvider'
 import Footer from '@/components/footer/Footer'
 import { Faq } from '@/components/faq/Faq'
-import { createClient } from '@/utils/supabase/server'
 
 const manrope = Plus_Jakarta_Sans({
         variable: '--manrope',
@@ -23,13 +22,11 @@ export default async function RootLayout({
 }: Readonly<{
         children: React.ReactNode
 }>) {
-        const { data } = await (await createClient()).auth.getUser()
-        console.log(data)
         return (
                 <html lang='en' suppressHydrationWarning>
                         <body className={`${manrope.className} antialiased font-sans flex flex-col min-h-full`}>
-                                <ThemeProvider defaultTheme='light' attribute='class' enableSystem disableTransitionOnChange>
-                                        <Header user={data.user?.user_metadata.fullName} />
+                                <ThemeProvider defaultTheme='system' attribute='class' enableSystem disableTransitionOnChange>
+                                        <Header />
                                         <main className='mt-17 max-md:mt-15 grow basis-auto'>
                                                 {children}
                                                 <Faq />
