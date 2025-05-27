@@ -6,13 +6,13 @@ import { useState } from 'react'
 export function SelectCreator({ types, callback, defaultValue }: { types: string[]; callback: (s: string) => void; defaultValue: string }) {
         return (
                 <Select onValueChange={callback} defaultValue={defaultValue}>
-                        <SelectTrigger className='w-32 max-xs:w-full capitalize font-medium dark:text-white'>
+                        <SelectTrigger className='w-32 font-medium capitalize max-xs:w-full dark:text-white'>
                                 <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
                                 {types.map((t, key) => {
                                         return (
-                                                <SelectItem value={t} className='capitalize font-medium' key={key}>
+                                                <SelectItem value={t} className='font-medium capitalize' key={key}>
                                                         {t}
                                                 </SelectItem>
                                         )
@@ -29,34 +29,34 @@ export default function FilterSection() {
         const [beds, setBeds] = useState<string>('all type')
         const [price, setPrice] = useState<string>('$200,000')
         return (
-                <section className='pt-25 pb-10 max-md:pt-15 max-md:pb-5'>
+                <section className='pb-10 pt-25 max-md:pt-15 max-md:pb-5'>
                         <div className='container flex flex-col items-center gap-15'>
-                                <div className='max-w-123 text-center'>
-                                        <h4 className='font-semibold mb-2'>Find Your Dream Property</h4>
+                                <div className='text-center max-w-123'>
+                                        <h4 className='mb-2 font-semibold'>Find Your Dream Property</h4>
                                         <p className='description'>We offer modern properties with the best quality that meet all your needs.</p>
                                 </div>
-                                <form action='' className='flex gap-20 max-lg:gap-7 flex-wrap justify-center max-xs:flex-col items-center max-xs:text-center max-xs:w-full max-xs:px-4'>
-                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
+                                <form action='' className='flex flex-wrap items-center justify-center gap-20 max-lg:gap-7 max-xs:flex-col max-xs:text-center max-xs:w-full max-xs:px-4'>
+                                        <label className='flex flex-col items-start gap-2 text-base text-gentle max-xs:w-full'>
                                                 Looking for
                                                 <SelectCreator types={['all type', 'buy', 'sell']} callback={setState} defaultValue={state} />
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
+                                        <label className='flex flex-col items-start gap-2 text-base text-gentle max-xs:w-full'>
                                                 Location
                                                 <SelectCreator types={['all cities', 'barcelona', 'warsaw']} callback={setCity} defaultValue={city} />
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
+                                        <label className='flex flex-col items-start gap-2 text-base text-gentle max-xs:w-full'>
                                                 Property Type
                                                 <SelectCreator types={['all type', 'family house', 'villa']} callback={setType} defaultValue={type} />
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
+                                        <label className='flex flex-col items-start gap-2 text-base text-gentle max-xs:w-full'>
                                                 Bedrooms
                                                 <SelectCreator types={['all type', 'a bedroom', '2 bedroom', '3 bedroom']} callback={setBeds} defaultValue={beds} />
                                         </label>
-                                        <label className='flex flex-col gap-2 text-gentle text-base max-xs:w-full items-start'>
+                                        <label className='flex flex-col items-start gap-2 text-base text-gentle max-xs:w-full'>
                                                 Budget
                                                 <SelectCreator types={['$200,000', '$300,000', '$450,000']} callback={setPrice} defaultValue={price} />
                                         </label>
-                                        <Button className='w-14 h-14 rounded-4xl text-base max-xs:w-full  max-xs:h-12'>
+                                        <Button className='text-base w-14 h-14 rounded-4xl max-xs:w-full max-xs:h-12'>
                                                 <span className='xs:hidden'>Search</span>
                                                 <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                         <path

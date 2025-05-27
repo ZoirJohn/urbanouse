@@ -35,7 +35,7 @@ export function HousesFilter() {
         return (
                 <>
                         <Filter />
-                        <div className='grid grid-cols-3 gap-5 max-lg:grid-cols-2 justify-center max-sm:hidden'>
+                        <div className='grid justify-center grid-cols-3 gap-5 max-lg:grid-cols-2 max-sm:hidden'>
                                 {houses.map((h, key) => {
                                         if (true) return <HouseCard {...h} key={key} />
                                 })}

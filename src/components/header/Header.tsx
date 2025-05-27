@@ -70,12 +70,12 @@ export default function Header() {
                                 ) : (
                                         <>
                                                 <Link href='/signup' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
-                                                        <Button variant='outline' className='rounded-3xl dark:text-black w-full dark:bg-white' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
+                                                        <Button variant='outline' className='w-full rounded-3xl dark:text-black dark:bg-white' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
                                                                 Sign Up
                                                         </Button>
                                                 </Link>
                                                 <Link href='signin' className={isMobile ? 'max-xs:w-22 w-full' : ''}>
-                                                        <Button className='rounded-3xl max-xs:w-22 w-full' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
+                                                        <Button className='w-full rounded-3xl max-xs:w-22' onClick={() => isMobile && setIsMobileMenuOpen(false)}>
                                                                 Sign In
                                                         </Button>
                                                 </Link>
@@ -91,7 +91,7 @@ export default function Header() {
                                 <SheetTitle></SheetTitle>
                                 <Menu className='w-6 h-6 text-black' onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
                                 <SheetContent side='right' className='w-62.5 px-8'>
-                                        <div className='flex flex-col items-start gap-4 mt-10 text-gray-800 font-medium'>
+                                        <div className='flex flex-col items-start gap-4 mt-10 font-medium text-gray-800'>
                                                 {navLinks.map(({ href, label }) => (
                                                         <Link
                                                                 key={href}
@@ -120,7 +120,7 @@ export default function Header() {
                                 'bg-white': isScrolled,
                         })}
                 >
-                        <div className='container flex justify-between items-center py-4 h-17'>
+                        <div className='container flex items-center justify-between py-4 h-17'>
                                 <Link href='/'>
                                         <Image src={logo} alt='logo' width={173} height={30} className='max-lg:hidden' />
                                         <Image src={minLogo} alt='logo' width={26} height={30} className='lg:hidden' />
@@ -128,7 +128,7 @@ export default function Header() {
 
                                 {renderDesktopNav()}
 
-                                <div className='hidden md:flex gap-3'>{renderAuthButtons()}</div>
+                                <div className='hidden gap-3 md:flex'>{renderAuthButtons()}</div>
 
                                 {renderMobileMenu()}
                         </div>

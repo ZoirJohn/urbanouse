@@ -7,13 +7,13 @@ import Image from 'next/image'
 export function HouseCard({ heightOfImg, price, name, addressStreet, addressCity, features, state }: House) {
         return (
                 <Link href=''>
-                        <Card className='dark:bg-black max-w-106 w-full max-sm:w-79 relative'>
-                                <Button className='rounded-3xl absolute top-5 left-5 uppercase'>FOR {state}</Button>
+                        <Card className='relative w-full dark:bg-black max-w-106 max-sm:w-79'>
+                                <Button className='absolute uppercase rounded-3xl top-5 left-5'>FOR {state}</Button>
                                 <Image src={heightOfImg > 325 ? '/img/castle.png' : '/img/hitech.png'} alt='card-image' className='rounded-xl' width={425} height={heightOfImg} />
                                 <CardHeader>
                                         <CardTitle className='max-xs:text-2xl'>${price},000</CardTitle>
                                         <CardDescription className='max-xs:text-[1.25rem]'>{name}</CardDescription>
-                                        <CardDescription className='text-gentle text-lg font-regular max-xs:text-base'>
+                                        <CardDescription className='text-lg text-gentle font-regular max-xs:text-base'>
                                                 {addressStreet}
                                                 <br /> {addressCity}
                                         </CardDescription>

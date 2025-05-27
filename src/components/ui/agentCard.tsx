@@ -6,11 +6,11 @@ import { Agent } from '@/utils/definitions'
 
 export default function AgentCard({ fullName, achievements, location, position }: Agent) {
         return (
-                <Card className='w-79 gap-0 dark:bg-transparent mx-auto max-xs:w-75'>
+                <Card className='gap-0 mx-auto w-79 dark:bg-transparent max-xs:w-75'>
                         <CardHeader>
-                                <Image src={`/img/agent${Math.round(Math.random() * 2 + 1)}.jpeg`} width={315} height={300} alt='agent' className='rounded-xl h-75 object-cover' loading='lazy' />
+                                <Image src={`/img/agent${Math.round(Math.random() * 2 + 1)}.jpeg`} width={315} height={300} alt='agent' className='object-cover rounded-xl h-75' loading='lazy' />
                                 <CardTitle className='text-[1.25rem]'>{fullName}</CardTitle>
-                                <CardDescription className='description font-normal mb-3'>{position}</CardDescription>
+                                <CardDescription className='mb-3 font-normal description'>{position}</CardDescription>
                         </CardHeader>
                         <CardContent className='flex flex-col gap-3'>
                                 <CardDescription className='description text-sm! font-normal flex gap-1'>
@@ -45,9 +45,9 @@ export default function AgentCard({ fullName, achievements, location, position }
                                         {achievements.sold && achievements.sold + ' properties sold'} {achievements.rented && ' | ' + achievements.rented + ' properties rented'}
                                 </CardDescription>
                         </CardContent>
-                        <CardFooter className='mt-5 p-0'>
+                        <CardFooter className='p-0 mt-5'>
                                 <Link href='' className='flex w-full'>
-                                        <Button variant='outline' className='border-1 border-black outline-0 shadow-none w-full rounded-4xl font-semibold text-sm'>
+                                        <Button variant='outline' className='w-full text-sm font-semibold border-black shadow-none border-1 outline-0 rounded-4xl'>
                                                 Contact Agent
                                         </Button>
                                 </Link>

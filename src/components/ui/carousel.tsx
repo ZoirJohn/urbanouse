@@ -17,10 +17,10 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
         const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
         return (
                 <div className={'embla w-full height-76 ' + className}>
-                        <div className='embla__viewport overflow-hidden' ref={emblaRef}>
-                                <div className='embla__container flex jusify-center gap-5 mx-auto w-full'>
+                        <div className='overflow-hidden embla__viewport' ref={emblaRef}>
+                                <div className='flex w-full gap-5 mx-auto embla__container jusify-center'>
                                         {slides.map((index, i) => (
-                                                <div className='embla__slide w-1/4 max-md:w-5/6 shrink-0' key={i}>
+                                                <div className='w-1/4 embla__slide max-md:w-5/6 shrink-0' key={i}>
                                                         {index}
                                                 </div>
                                         ))}
@@ -28,7 +28,7 @@ const EmblaCarousel: React.FC<PropType> = ({ className, ...props }) => {
                         </div>
 
                         <div className='embla__controls'>
-                                <div className='embla__dots flex justify-center items-center pt-5'>
+                                <div className='flex items-center justify-center pt-5 embla__dots'>
                                         {scrollSnaps.map((_, index) => (
                                                 <DotButton
                                                         key={index}

@@ -14,7 +14,7 @@ export default function Opinion() {
 
                                 <Feedback
                                         slides={[
-                                                <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
+                                                <div className='flex flex-col items-center py-5 px-30 max-md:px-2' key={randomUUID + ''}>
                                                         <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
                                                                 “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step. We
                                                                 couldn&apos;t be happier with our new home.”
@@ -22,7 +22,7 @@ export default function Opinion() {
                                                         <p className=''>Sarah & Michael Stone</p>
                                                         <p className='description text-base!'>Homeowners</p>
                                                 </div>,
-                                                <div className='px-30 py-5 flex flex-col items-center max-md:px-2' key={randomUUID + ''}>
+                                                <div className='flex flex-col items-center py-5 px-30 max-md:px-2' key={randomUUID + ''}>
                                                         <h5 className='text-4xl text-center mb-8 max-sm:text-[1.25rem]!'>
                                                                 “Urbanouse made buying our first home an absolute breeze! Their team was incredibly attentive and guided us through every step. We
                                                                 couldn&apos;t be happier with our new home.”
