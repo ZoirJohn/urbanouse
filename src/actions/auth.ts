@@ -1,7 +1,6 @@
 import { z } from 'zod'
 import { SingInState, SingUpState } from '@/utils/definitions'
 import { createClient } from '@/utils/supabase/client'
-import { redirect } from 'next/navigation'
 
 const signupSchema = z.object({
         firstName: z.string().min(1, 'Please provide your name'),
@@ -61,7 +60,7 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
                         values: data,
                 }
         }
-        redirect('/')
+        return { errors: {}, values: {} }
 }
 
 const SigninFormSchema = z.object({
@@ -100,6 +99,5 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                         values: {},
                 }
         }
-        redirect('/')
         return { errors: {}, values: {} }
 }

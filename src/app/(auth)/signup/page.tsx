@@ -10,6 +10,7 @@ import { SingUpState } from '@/utils/definitions'
 import Link from 'next/link'
 import Image from 'next/image'
 import { createClient } from '@/utils/supabase/client'
+import { LoaderCircle } from 'lucide-react'
 
 function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()
@@ -122,7 +123,7 @@ function FormControls({ state }: { state: SingUpState }) {
                                         })}
                         </div>
                         <Button className='rounded-4xl h-14 mt-3 text-base' disabled={pending}>
-                                Sign Up
+                                {pending ? <LoaderCircle className='animate-spin' /> : 'Sign Up'}
                         </Button>
                 </>
         )

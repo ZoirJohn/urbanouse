@@ -7,24 +7,28 @@ import { signin } from '@/actions/auth'
 import { useActionState } from 'react'
 import { SingInState } from '@/utils/definitions'
 import { useFormStatus } from 'react-dom'
-import { LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { LoaderCircle } from 'lucide-react'
 
 function FormControls({ state }: { state: SingInState }) {
         const { pending } = useFormStatus()
         return (
                 <>
-                        {pending && (
-                                <div className='bg-white/90 absolute top-1/2 left-1/2 -translate-1/2 w-full h-full flex items-center justify-center'>
-                                        <LoaderCircle className='animate-spin w-1/2 h-1/2' />
-                                </div>
-                        )}
                         <div className='grid gap-3'>
                                 <Label htmlFor='email' className='text-base'>
                                         Username or Email
                                 </Label>
-                                <Input id='email' name='email' type='email' placeholder='you@example.com' autoComplete='username' className='rounded-4xl p-4 h-14' defaultValue={state.values.email} />
+                                <Input
+                                        id='email'
+                                        name='email'
+                                        type='email'
+                                        placeholder='you@example.com'
+                                        autoComplete='username'
+                                        className='rounded-4xl p-4 h-14'
+                                        defaultValue={state.values.email}
+                                        disabled={pending}
+                                />
                                 {state.errors.email &&
                                         state.errors.email.map((error, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
@@ -44,6 +48,7 @@ function FormControls({ state }: { state: SingInState }) {
                                         autoComplete='new-password'
                                         className='rounded-4xl p-4 h-14'
                                         defaultValue={state.values.password}
+                                        disabled={pending}
                                 />
                                 {state.errors.password &&
                                         state.errors.password.map((password, i) => (
@@ -55,8 +60,8 @@ function FormControls({ state }: { state: SingInState }) {
                         <Link href='/forgot' className='justify-self-end hover:underline underline-offset-4'>
                                 Forgot your password?
                         </Link>
-                        <Button type='submit' className='w-full h-12 rounded-4xl'>
-                                Log In
+                        <Button type='submit' className='w-full h-12 rounded-4xl' disabled={pending}>
+                                {pending ? <LoaderCircle className='animate-spin' /> : 'Log In'}
                         </Button>
                 </>
         )
