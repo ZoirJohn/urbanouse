@@ -39,8 +39,7 @@ export default function Header() {
                 async function fetchUsers() {
                         const supabase = await createClient()
                         const { data } = await supabase.auth.getUser()
-                        console.log(data);
-                        return data.user?.user_metadata.fullName
+                        return data.user?.user_metadata.full_name
                 }
                 fetchUsers().then(setUser)
         }, [])

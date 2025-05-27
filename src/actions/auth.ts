@@ -48,7 +48,7 @@ export async function signup(state: SingUpState, formData: FormData): Promise<Si
                 password: validated.data.password,
                 options: {
                         data: {
-                                fullName: validated.data.firstName + ' ' + validated.data.lastName,
+                                full_name: validated.data.firstName + ' ' + validated.data.lastName,
                         },
                 },
         })
