@@ -5,12 +5,12 @@ import { Button } from '@/components/ui/button'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from '@/components/ui/navigation-menu'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import { createClient } from '@/utils/supabase/client'
 import clsx from 'clsx'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../../../public/img/logo.svg'
 import minLogo from '../../../public/img/logoMin.svg'
-import { createClient } from '@/utils/supabase/client'
 
 const navLinks = [
         { href: '/', label: 'Home' },
