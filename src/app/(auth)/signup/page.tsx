@@ -9,6 +9,7 @@ import { useFormStatus } from 'react-dom'
 import { SingUpState } from '@/utils/definitions'
 import Link from 'next/link'
 import Image from 'next/image'
+import { createClient } from '@/utils/supabase/client'
 
 function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()
@@ -129,6 +130,18 @@ function FormControls({ state }: { state: SingUpState }) {
 
 export default function LoginForm() {
         const [state, action] = useActionState(signup, { errors: {}, values: {} })
+        async function signupwithgoogle(): Promise<void> {
+                const supabase = await createClient()
+                const { error } = await supabase.auth.signInWithOAuth({
+                        provider: 'google',
+                        options: {
+                                redirectTo: 'http://localhost:3000/auth/callback',
+                        },
+                })
+                if (error) {
+                        console.error(error.message)
+                }
+        }
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>
@@ -140,7 +153,7 @@ export default function LoginForm() {
                                                 </CardDescription>
                                         </CardHeader>
                                         <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center max-sm:grid-cols-1 max-sm:gap-y-4'>
-                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58' onClick={signupwithgoogle}>
                                                         <Image src='/img/google.png' alt='' width={24} height={24} />
                                                         Log In with Google
                                                 </Button>

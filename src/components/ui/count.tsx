@@ -7,7 +7,7 @@ type AnimatedCounterProps = {
         duration?: number
 }
 
-export default function Count({ target, duration = 1000 }: AnimatedCounterProps) {
+export default function Count({ target, duration = 3000 }: AnimatedCounterProps) {
         const [count, setCount] = useState(0)
         const hasAnimated = useRef(false)
         const animationFrameId = useRef<number>(0)
