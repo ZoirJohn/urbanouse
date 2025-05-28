@@ -13,7 +13,7 @@ export default function Agents() {
         const [agents, setAgents] = useState<Agent[]>([])
         const [numberOfUsers, setNumberOfUsers] = useState<number>(1)
         const fetchAgents = async () => {
-                const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'force-cache' })
+                const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'no-cache' })
                         .then((res) => res.json())
                         .catch((error) => {
                                 throw new Error(error.message)
