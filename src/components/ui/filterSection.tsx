@@ -1,7 +1,7 @@
 'use client'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Button } from '@/components/ui/button'
-import { FormEvent, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 export function SelectCreator({ types, callback, defaultValue }: { types: string[]; callback: (s: string) => void; defaultValue: string }) {
@@ -35,7 +35,7 @@ export default function FilterSection() {
         }
         useEffect(() => {
                 buildPath(`/properties/${state}/${city}/${type}/${beds}/${price}`)
-        }, [])
+        }, [state, city, type, beds, price])
         return (
                 <section className='pb-10 pt-25 max-md:pt-15 max-md:pb-5'>
                         <div className='container flex flex-col items-center gap-15'>
