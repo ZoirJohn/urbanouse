@@ -14,7 +14,8 @@ const jakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-        title: 'NBNB',
+        title: 'Urbanouse',
+        description:'Buy and Rent houses'
 }
 
 export default async function RootLayout({

@@ -56,7 +56,7 @@ export default function FilterSection() {
                                                 Budget
                                                 <SelectCreator types={['$200,000', '$300,000', '$450,000']} callback={setPrice} defaultValue={price} />
                                         </label>
-                                        <Button className='text-base w-14 h-14 rounded-4xl max-xs:w-full max-xs:h-12'>
+                                        <Button className='text-base w-14 h-14 rounded-4xl max-xs:w-full max-xs:h-12' aria-label='Search'       >
                                                 <span className='xs:hidden'>Search</span>
                                                 <svg width='26' height='26' viewBox='0 0 26 26' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                         <path

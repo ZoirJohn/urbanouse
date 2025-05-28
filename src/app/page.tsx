@@ -57,6 +57,7 @@ export default async function Home() {
                                                         <Link
                                                                 href=''
                                                                 className='w-18 h-18 rounded-[50%] border border-black dark:border-white flex items-center gap-4 justify-center max-xs:w-full max-xs:rounded-3xl max-xs:h-12'
+                                                                aria-label='More projects'
                                                         >
                                                                 <svg width='23' height='22' viewBox='0 0 23 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
                                                                         <path
