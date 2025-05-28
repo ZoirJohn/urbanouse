@@ -120,7 +120,7 @@ export default function Header() {
                         <div className='container flex items-center justify-between py-4 h-17'>
                                 <Link href='/'>
                                         <Image src={logo} alt='logo' width={173} height={30} className='max-lg:hidden' loading='eager' />
-                                        <Image src={minLogo} alt='logo' width={26} height={30} className='lg:hidden' />
+                                        <Image src={minLogo} alt='logo' width={26} height={30} className='lg:hidden' loading='eager' />
                                 </Link>
 
                                 {renderDesktopNav()}

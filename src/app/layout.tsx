@@ -24,7 +24,7 @@ export default async function RootLayout({
         children: React.ReactNode
 }>) {
         return (
-                <html lang='en' suppressHydrationWarning>
+                <html lang='en' suppressHydrationWarning className='scroll-smooth'>
                         <body className={`${jakarta.className} antialiased font-sans flex flex-col min-h-full`}>
                                 <ThemeProvider defaultTheme='system' attribute='class' enableSystem disableTransitionOnChange>
                                         <Header />

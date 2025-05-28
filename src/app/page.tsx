@@ -55,7 +55,7 @@ export default async function Home() {
                                                 <Box />
                                                 <div className='flex md:justify-center justify-end items-center max-lg:justify-center max-xs:col-span-2 gap-4 md:flex-col'>
                                                         <Link
-                                                                href=''
+                                                                href='/properties'
                                                                 className='w-18 h-18 rounded-[50%] border border-black dark:border-white flex items-center gap-4 justify-center max-xs:w-full max-xs:rounded-3xl max-xs:h-12'
                                                                 aria-label='More projects'
                                                         >

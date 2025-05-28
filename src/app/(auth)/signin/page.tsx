@@ -83,8 +83,8 @@ export default function LoginForm() {
                                                         Log In with Google
                                                 </Button>
                                                 <Button variant='secondary' className='rounded-4xl h-10 w-58 text-base'>
-                                                        <Image src='/img/apple.png' alt='' width={24} height={24} />
-                                                        Log In with Apple
+                                                        <Image src='/img/facebook.png' alt='' width={24} height={24} />
+                                                        Log In with Facebook
                                                 </Button>
                                                 <p className='text-base! text-gentle col-span-2 max-sm:col-span-1'>or continue with email</p>
                                         </div>

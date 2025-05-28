@@ -6,8 +6,10 @@ import { HouseCard } from '@/components/ui/houseCard'
 import { House } from '@/utils/definitions'
 import { ReactNode } from 'react'
 
-export default async function Properties(): Promise<ReactNode> {
+export default async function Properties({ params }: { params: Promise<{ filter: string }> }): Promise<ReactNode> {
         const houses: House[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/houses', { cache: 'no-cache' }).then((res) => res.json())
+        const { filter } = await params
+        console.log(typeof filter)
         return (
                 <>
                         <FilterSection />
