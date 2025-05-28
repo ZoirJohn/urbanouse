@@ -1,3 +1,3 @@
-export default function Filter({}: {}) {
+export default function Filter() {
         return <></>
 }
