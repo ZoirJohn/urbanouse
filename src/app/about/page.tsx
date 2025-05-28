@@ -6,7 +6,7 @@ import AgentCard from '@/components/ui/agentCard'
 import { Agent } from '@/utils/definitions'
 
 export default async function About() {
-        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'no-store' }).then((res) => res.json())
+        const agents: Agent[] = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'force-cache' }).then((res) => res.json())
         return (
                 <>
                         <section>
@@ -17,13 +17,13 @@ export default async function About() {
                                                 <p className='md:basis-125 description pr-5'>Connecting you with premium properties and unparalleled real estate services.</p>
                                         </div>
                                         <div>
-                                                <Image src='/img/bgimage.png' width={680} height={550} alt='image' />
+                                                <Image src='/img/hitech2.jpeg' width={680} height={550} alt='image' />
                                         </div>
                                 </div>
                         </section>
                         <section>
                                 <div className='container flex gap-15 items-center justify-center max-sm:flex-col max-md:gap-x-10 max-md:gap-y-2'>
-                                        <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0' />
+                                        <Image src='/img/floralhouse.jpeg' width={620} height={447} alt='image' className='lg:shrink-0' />
                                         <div>
                                                 <p className='description'>
                                                         At Urbanouse, we believe finding a home is more than a transaction—it&apos;s about creating a space where dreams grow. Founded by a team of
@@ -62,7 +62,7 @@ export default async function About() {
                                                         Our vision is to become a trusted leader in the real estate industry by delivering excellence, integrity, and innovation in every transaction.
                                                 </p>
                                         </div>
-                                        <Image src='/img/descr.png' width={620} height={447} alt='image' className='lg:shrink-0'></Image>
+                                        <Image src='/img/floralhouse.jpeg' width={620} height={447} alt='image' className='lg:shrink-0'></Image>
                                 </div>
                         </section>
                         <section>

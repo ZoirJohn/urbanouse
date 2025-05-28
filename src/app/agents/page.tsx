@@ -13,7 +13,7 @@ export default function Agents() {
         const [agents, setAgents] = useState<Agent[]>([])
         const [numberOfUsers, setNumberOfUsers] = useState<number>(1)
         const fetchAgents = async () => {
-                const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'no-store' })
+                const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL! + '/api/agents', { cache: 'force-cache' })
                         .then((res) => res.json())
                         .catch((error) => {
                                 throw new Error(error.message)
@@ -36,7 +36,7 @@ export default function Agents() {
                                                 </Link>
                                         </div>
                                         <div>
-                                                <Image src='/img/bgimage.png' width={680} height={550} alt='image' />
+                                                <Image src='/img/team1.jpeg' width={680} height={550} alt='image' />
                                         </div>
                                 </div>
                         </section>

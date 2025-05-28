@@ -17,8 +17,6 @@ const navLinks = [
         { href: '/about', label: 'About Us' },
         { href: '/properties', label: 'Properties' },
         { href: '/agents', label: 'Agents' },
-        { href: '/projects', label: 'Projects' },
-        { href: '/contact', label: 'Contact Us' },
 ]
 
 export default function Header() {
