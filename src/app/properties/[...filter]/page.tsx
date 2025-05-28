@@ -1,3 +1,3 @@
-export default function Filter({ params }: { params: Promise<{ filter: string }> }) {
+export default function Filter({}: {}) {
         return <></>
 }
