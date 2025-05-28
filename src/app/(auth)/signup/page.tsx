@@ -7,10 +7,10 @@ import { signup } from '@/actions/auth'
 import { useActionState } from 'react'
 import { useFormStatus } from 'react-dom'
 import { SingUpState } from '@/utils/definitions'
+import { signupwithfacebook, signupwithgoogle } from '@/actions/handlers'
+import { LoaderCircle } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { createClient } from '@/utils/supabase/client'
-import { LoaderCircle } from 'lucide-react'
 
 function FormControls({ state }: { state: SingUpState }) {
         const { pending } = useFormStatus()
@@ -131,30 +131,7 @@ function FormControls({ state }: { state: SingUpState }) {
 
 export default function LoginForm() {
         const [state, action] = useActionState(signup, { errors: {}, values: {} })
-        async function signupwithgoogle(): Promise<void> {
-                const supabase = await createClient()
-                const { error } = await supabase.auth.signInWithOAuth({
-                        provider: 'google',
-                        options: {
-                                redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
-                        },
-                })
-                if (error) {
-                        console.error(error.message)
-                }
-        }
-        async function signupwithfacebook(): Promise<void> {
-                const supabase = await createClient()
-                const { error } = await supabase.auth.signInWithOAuth({
-                        provider: 'facebook',
-                        options: {
-                                redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/callback`,
-                        },
-                })
-                if (error) {
-                        console.error(error.message)
-                }
-        }
+        
         return (
                 <section>
                         <div className='container flex items-center gap-15 max-md:flex-col'>

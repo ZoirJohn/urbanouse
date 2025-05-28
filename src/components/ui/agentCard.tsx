@@ -6,7 +6,7 @@ import { Agent } from '@/utils/definitions'
 
 export default function AgentCard({ fullName, achievements, location, position }: Agent) {
         return (
-                <Card className='gap-0 mx-auto w-79 dark:bg-transparent max-xs:w-75'>
+                <Card className='gap-0 mx-auto w-79 dark:bg-transparent max-xs:w-75 select-none!'>
                         <CardHeader>
                                 <Image src={`/img/agent${Math.round(Math.random() * 2 + 1)}.jpeg`} width={315} height={300} alt='agent' className='object-cover rounded-xl h-75' loading='lazy' />
                                 <CardTitle className='text-[1.25rem]'>{fullName}</CardTitle>

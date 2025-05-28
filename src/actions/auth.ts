@@ -1,6 +1,9 @@
+'use server'
 import { z } from 'zod'
 import { SingInState, SingUpState } from '@/utils/definitions'
 import { createClient } from '@/utils/supabase/client'
+import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 
 const signupSchema = z.object({
         firstName: z.string().min(1, 'Please provide your name'),
@@ -75,7 +78,7 @@ const SigninFormSchema = z.object({
                 })
                 .trim(),
 })
-export async function signin(state: SingInState, formData: FormData): Promise<SingInState> {
+export async function signin(state: SingInState | undefined, formData: FormData): Promise<SingInState | undefined> {
         const data = {
                 email: formData.get('email'),
                 password: formData.get('password'),
@@ -99,5 +102,7 @@ export async function signin(state: SingInState, formData: FormData): Promise<Si
                         values: {},
                 }
         }
-        return { errors: {}, values: {} }
+
+        revalidatePath('/', 'layout')
+        redirect('/')
 }

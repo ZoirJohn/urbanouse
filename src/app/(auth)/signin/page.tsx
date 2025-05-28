@@ -7,11 +7,12 @@ import { signin } from '@/actions/auth'
 import { useActionState } from 'react'
 import { SingInState } from '@/utils/definitions'
 import { useFormStatus } from 'react-dom'
+import { LoaderCircle } from 'lucide-react'
+import { signupwithfacebook, signupwithgoogle } from '@/actions/handlers'
 import Link from 'next/link'
 import Image from 'next/image'
-import { LoaderCircle } from 'lucide-react'
 
-function FormControls({ state }: { state: SingInState }) {
+function FormControls({ state }: { state: SingInState | undefined }) {
         const { pending } = useFormStatus()
         return (
                 <>
@@ -26,10 +27,10 @@ function FormControls({ state }: { state: SingInState }) {
                                         placeholder='you@example.com'
                                         autoComplete='username'
                                         className='rounded-4xl p-4 h-14'
-                                        defaultValue={state.values.email}
+                                        defaultValue={state?.values.email}
                                         disabled={pending}
                                 />
-                                {state.errors.email &&
+                                {state?.errors.email &&
                                         state.errors.email.map((error, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
                                                         {error}
@@ -47,10 +48,10 @@ function FormControls({ state }: { state: SingInState }) {
                                         placeholder='••••••••'
                                         autoComplete='new-password'
                                         className='rounded-4xl p-4 h-14'
-                                        defaultValue={state.values.password}
+                                        defaultValue={state?.values.password}
                                         disabled={pending}
                                 />
-                                {state.errors.password &&
+                                {state?.errors.password &&
                                         state.errors.password.map((password, i) => (
                                                 <p className='text-sm text-red-500' key={i}>
                                                         {password}
@@ -68,7 +69,8 @@ function FormControls({ state }: { state: SingInState }) {
 }
 
 export default function LoginForm() {
-        const [state, action] = useActionState(signin, { errors: {}, values: {} })
+        const initialState: SingInState | undefined = { errors: {}, values: {} }
+        const [state, action] = useActionState(signin, initialState)
         return (
                 <section>
                         <div className='container'>
@@ -78,11 +80,11 @@ export default function LoginForm() {
                                                 <CardDescription className='text-lg'>Log in to manage your property searches, save favorites, and get personalized recommendations.</CardDescription>
                                         </CardHeader>
                                         <div className='grid grid-cols-2 gap-y-9 gap-x-5 justify-items-center max-sm:grid-cols-1 max-sm:gap-y-4'>
-                                                <Button variant='secondary' className='rounded-4xl h-10 w-58'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58' onClick={signupwithgoogle}>
                                                         <Image src='/img/google.png' alt='' width={24} height={24} />
                                                         Log In with Google
                                                 </Button>
-                                                <Button variant='secondary' className='rounded-4xl h-10 w-58 text-base'>
+                                                <Button variant='secondary' className='rounded-4xl h-10 w-58 text-base' onClick={signupwithfacebook}>
                                                         <Image src='/img/facebook.png' alt='' width={24} height={24} />
                                                         Log In with Facebook
                                                 </Button>
