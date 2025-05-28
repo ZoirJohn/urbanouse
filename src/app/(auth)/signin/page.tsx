@@ -73,7 +73,7 @@ export default function LoginForm() {
         const [state, action] = useActionState(signin, initialState)
         return (
                 <section>
-                        <div className='container'>
+                        <div className='container flex justify-center items-center'>
                                 <Card className='border max-w-141.5 w-full p-10 max-lg:p-5 relative'>
                                         <CardHeader>
                                                 <CardTitle className='text-3xl font-semibold'>Welcome Back!</CardTitle>
@@ -96,7 +96,7 @@ export default function LoginForm() {
                                                 </form>
                                                 <p className='text-base font-semibold flex justify-center items-center mt-10 gap-1'>
                                                         Don’t have an account?
-                                                        <Link href='/signin' className='text-blue-500 text-xs'>
+                                                        <Link href='/signup' className='text-blue-500 text-xs'>
                                                                 Sign Up
                                                         </Link>
                                                 </p>

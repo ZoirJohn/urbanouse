@@ -131,10 +131,10 @@ function FormControls({ state }: { state: SingUpState }) {
 
 export default function LoginForm() {
         const [state, action] = useActionState(signup, { errors: {}, values: {} })
-        
+
         return (
                 <section>
-                        <div className='container flex items-center gap-15 max-md:flex-col'>
+                        <div className='container flex justify-center items-center gap-15 max-md:flex-col'>
                                 <Card className='border max-w-141.5 w-full p-10 max-lg:p-5'>
                                         <CardHeader>
                                                 <CardTitle className='text-[28px]'>Join Urbanouse Today!</CardTitle>
@@ -165,9 +165,6 @@ export default function LoginForm() {
                                                 </p>
                                         </CardContent>
                                 </Card>
-                                <div className='max-w-694 max-container:p-0'>
-                                        <Image src='/img/image.png' alt='image' width={694} height={845} />
-                                </div>
                         </div>
                 </section>
         )
