@@ -15,7 +15,10 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
         title: 'Urbanouse',
-        description:'Buy and Rent houses'
+        description: 'Buy and Rent houses',
+        verification: {
+                google: '1jjrNxuZFrucs4sJwZV364ko64HDkk1crnRj4eebASE',
+        },
 }
 
 export default async function RootLayout({
